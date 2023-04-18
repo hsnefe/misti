@@ -1,10 +1,10 @@
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.nio.file.Paths;
 import java.util.Formatter;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 public class Card {
 public Card(int point, String rank, String suit) {
         this.point = point;
@@ -82,5 +82,25 @@ public static ArrayList<Card> deck_creator(){
       i++;
     }
     return the_List;
+}
+public static ArrayList<Card> shuffler(ArrayList<Card> deck){
+    Collections.shuffle(deck);
+    return deck;
+}
+public static ArrayList<Card> cutter(ArrayList<Card> deck, int uselect){
+    uselect--;
+    ArrayList<Card> temp1 = new ArrayList<Card>();
+    ArrayList<Card> temp2 = new ArrayList<Card>();
+    for(int i = 0;i< deck.size();i++){
+        if(i<uselect){
+            temp1.add(deck.get(i));
+        }
+        else temp2.add(deck.get(i));
+    }
+    for(int i = 0;i<deck.size();i++){
+        if(i<deck.size()-uselect)deck.set(i,temp2.get(i));
+        else deck.set(i,temp1.get(deck.size()-i-1));
+    }
+    return deck;
 }
 }

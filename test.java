@@ -13,6 +13,8 @@ public class Test{
         FileWriter fw = null;
         Card.deck_writer(f, fw);
         cardsa = Card.deck_creator();
+        Card.shuffler(cardsa);
+        Card.cutter(cardsa, 5);
         for(int i=0;i<cardsa.size();i++){
             System.out.println(cardsa.get(i).getRank()+cardsa.get(i).getSuit()+" "+cardsa.get(i).getPoint());
         }
