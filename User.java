@@ -7,6 +7,7 @@ public class User implements Player {
     public ArrayList<Card> Templist = new ArrayList<Card>();
 
 
+
     public void play_card(ArrayList<Card> Hand, ArrayList<Card> Table, int index){
         index--;
         if(Hand.get(index) != null){
@@ -15,20 +16,25 @@ public class User implements Player {
         }
         if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
 
-            Templist.add(Table.get(Table.size()-1));
-            Templist.add(Table.get(Table.size()-2));
+            for(int i=Table.size();i<Table.size();i++){
+                Templist.add(Table.get(i));
+            }
+
 
             point_sum(Templist);
             Table.clear();
         }
     }
 
-    @Override
-    public void point_sum(ArrayList <Card> SummedCards) {
-        int temp_point;
-        temp_point=SummedCards.get(SummedCards.size()-1).getPoint() +SummedCards.get(SummedCards.size()-2).getPoint();
-        Ppoint+=temp_point;
 
+    public void point_sum(ArrayList <Card> SummedCards) {
+        int temp_point=0;
+
+        for (int i =0;i<SummedCards.size();i++){
+
+        temp_point+=SummedCards.get(i).getPoint();
+        Ppoint+=temp_point;
+        }
     }
 }
 
