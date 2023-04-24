@@ -103,4 +103,39 @@ public static ArrayList<Card> cutter(ArrayList<Card> deck, int uselect){
     }
     return deck;
 }
+public static void dealer(ArrayList<Card> Table, ArrayList<Card> P1Hand, ArrayList<Card> P2Hand, ArrayList<Card> P3Hand, ArrayList<Card> P4Hand,ArrayList<Card> Deck, boolean first_turn){
+    if(P3Hand == null){
+        if(first_turn){
+            for(int i = 0;i<12;i++){
+                if(i<4){
+                    Table.add(Deck.get(0));
+                    Deck.remove(0);
+                }
+                else if(i%2==0){
+                    P1Hand.add(Deck.get(0));
+                    Deck.remove(0);
+                }
+                else if(i%2==1){
+                    P2Hand.add(Deck.get(0));
+                    Deck.remove(0);
+                }
+            }
+        }
+        else{
+            for(int i = 0; i<8;i++){
+                if(i%2==0){
+                    P1Hand.add(Deck.get(0));
+                    Deck.remove(0);
+                }
+                else{
+                    P2Hand.add(Deck.get(0));
+                    Deck.remove(0);
+                }
+            }
+        }
+    }
+    else if(P4Hand == null){
+        
+    }
+}
 }
