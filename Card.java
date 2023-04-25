@@ -68,7 +68,8 @@ public class Card {
         Scanner reader = null;
         try {
             reader = new Scanner(Paths.get("deck.txt"));
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
 
             e.printStackTrace();
         }
@@ -186,7 +187,7 @@ public class Card {
                     }
                 }
         }
-    else {
+        else {
             if (first_turn) {
                 for (int i = 0; i < 20; i++) {
                     if (i < 4) {
@@ -212,7 +213,8 @@ public class Card {
                     }
 
                 }
-            } else {
+            }
+            else {
                 for (int i = 0; i < 16; i++) {
                     if (i % 4 == 0) {
                         P1Hand.add(Deck.get(0));

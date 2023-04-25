@@ -1,12 +1,11 @@
-
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-public class test{
+public class Test{
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         Scanner sc= new Scanner (System.in);
         ArrayList<Card>P1 = new ArrayList<Card>();
         ArrayList<Card>P2 = new ArrayList<Card>();
@@ -43,9 +42,10 @@ public class test{
         System.out.println("************");
         for (int i=0;i<P4.size();i++){
             System.out.println(P4.get(i).getRank()+P4.get(i).getSuit()+" "+P4.get(i).getPoint());
-        }
 
+        }
         System.out.println("************");
+
 
     }
 }
