@@ -41,7 +41,7 @@ public class Expert implements Player {
 
 
                 else {
-                    for (int k = Table.size(); k < Table.size(); k++) {
+                    for (int k = 0; k < Table.size(); k++) {
 
                         Templist.add(Table.get(k));
                         Expert_Collected_card.add(Table.get(k));

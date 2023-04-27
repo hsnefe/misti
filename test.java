@@ -29,7 +29,7 @@ public class Test{
             System.out.println(Cardsa.get(i).getRank()+Cardsa.get(i).getSuit()+" "+Cardsa.get(i).getPoint());
         }
 
-        Card.dealer(Table,P1.getPhand(),P2.getPhand(),P3.getPhand(),P4.getPhand(),Cardsa,true);
+        Card.dealer(Table,P1,P2,P3,P4,Cardsa,true);
         System.out.println("**************************");
         System.out.println("Player 1 Hand:");
         for (int i=0;i<P1.getPhand().size();i++){

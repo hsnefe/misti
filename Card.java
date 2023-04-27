@@ -107,9 +107,9 @@ public class Card {
         }
         return deck;
     }
-    public static void dealer(ArrayList<Card> Table, ArrayList<Card> P1Hand, ArrayList<Card> P2Hand, ArrayList<Card> P3Hand, ArrayList<Card> P4Hand,ArrayList<Card> Deck, boolean first_turn){
+    public static void dealer(ArrayList<Card> Table, User P1, User P2, User P3, User P4,ArrayList<Card> Deck, boolean first_turn){
 
-        if(P3Hand == null){
+        if(P3.getPhand() == null){
 
             if(first_turn){
 
@@ -120,11 +120,12 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if(i%2==0){
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if(i%2==1){
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
@@ -134,18 +135,19 @@ public class Card {
                 for(int i = 0; i<8;i++){
 
                     if(i%2==0){
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else{
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
             }
         }
 
-        else if(P4Hand == null){
+        else if(P4.getPhand() == null){
 
             if (first_turn){
 
@@ -156,15 +158,16 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if(i%3==0){
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if (i%3==1){
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i%3==2){
-                        P3Hand.add(Deck.get(0));
+                        P3.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
@@ -174,15 +177,16 @@ public class Card {
                 for (int i =0;i<12;i++){
 
                     if (i%3==0){
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     if (i%3==1){
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(0);
                     }
                     if (i%3==2){
-                        P3Hand.add(Deck.get(0));
+                        P3.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
@@ -196,19 +200,20 @@ public class Card {
 
                     }
                     else if (i % 4 == 0) {
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if (i % 4 == 1) {
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i % 4 == 2) {
-                        P3Hand.add(Deck.get(0));
+                        P3.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if (i % 4 == 3) {
-                        P4Hand.add(Deck.get(0));
+                        P4.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
 
@@ -217,19 +222,20 @@ public class Card {
             else {
                 for (int i = 0; i < 16; i++) {
                     if (i % 4 == 0) {
-                        P1Hand.add(Deck.get(0));
+                        P1.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if (i % 4 == 1) {
-                        P2Hand.add(Deck.get(0));
+                        P2.getPhand()
+                .add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i % 4 == 2) {
-                        P3Hand.add(Deck.get(0));
+                        P3.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     else if (i % 4 == 3) {
-                        P4Hand.add(Deck.get(0));
+                        P4.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
