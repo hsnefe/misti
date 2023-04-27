@@ -19,15 +19,15 @@ public class Expert extends User implements Player {
     private static int tempnumber;
     private ArrayList<Card> Expert_Collected_card;
     private static int Expertpoint;
-    private ArrayList<Card> ExpertHand = new ArrayList<Card>();
     private ArrayList<Card> Templist = new ArrayList<Card>();
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist
 
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
         
-        for (int i = 0; i < ExpertHand.size(); i++) {
+        for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
+            if (Table.size() > 1) {
             if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
                 if (Table.size() == 2) {
                     System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
@@ -58,66 +58,66 @@ public class Expert extends User implements Player {
                 point_sum(Templist);
                 Table.clear();
             }
+        }
 
             else if (Table.get(0) != null) {
                     for (int b=0;b<4;b++){
                         if (Counter_1==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_2==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_3==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_4==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_5==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_6==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_7==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_8==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_9==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_10==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_11==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_12==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
                         else if (Counter_13==3){
-                            Table.add(ExpertHand.get(b));
+                            Table.add(super.getPhand().get(b));
                         }
 
                     }
 
-                if (Objects.equals(Table.get(Table.size() - 1).getRank(), ExpertHand.get(i).getRank())) {
-                    Table.add(ExpertHand.get(i));
+                if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
+                    Table.add(super.getPhand().get(i));
 
                 }
 
-                else if (Table.size()>3 && ExpertHand.size()>1 && ExpertHand.get(i).getRank() == "11") {// 11==J
-                    Table.add(ExpertHand.get(i));
+                else if (Table.size()>3 && super.getPhand().size()>1 && super.getPhand().get(i).getRank() == "11") {// 11==J
+                    Table.add(super.getPhand().get(i));
                 }
             }
             else  {
-                Table.add(ExpertHand.get(index));
-                ExpertHand.remove(index);
+                Table.add(super.getPhand().get(index));
+                super.getPhand().remove(index);
             }
         }
-        index--;
     }
 
     @Override

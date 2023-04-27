@@ -36,9 +36,10 @@ public  class User implements Player {
             Table.add(PHand.get(index));
             PHand.remove(index);
         }
-
+        
+        if (Table.size() > 1) {
         if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
-
+            
             if (Table.size()==2){
                 System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                 for (int i=0;i<2;i++){
@@ -68,6 +69,7 @@ public  class User implements Player {
 
             point_sum(Templist);
             Table.clear();
+        }
         }
     }
 

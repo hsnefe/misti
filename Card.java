@@ -14,6 +14,7 @@ public class Card {
     private int point;
     private String rank;
     private String suit;
+    private static int turn = 1;
     public int getPoint() {
         return point;
     }
@@ -107,11 +108,11 @@ public class Card {
         }
         return deck;
     }
-    public static void dealer(ArrayList<Card> Table, User P1, User P2, User P3, User P4,ArrayList<Card> Deck, boolean first_turn){
 
+    public static void dealer(ArrayList<Card> Table, User P1, User P2, User P3, User P4,ArrayList<Card> Deck){
         if(P3 == null){
 
-            if(first_turn){
+            if(turn == 1){
 
                 for(int i = 0;i<12;i++){
 
@@ -124,11 +125,11 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if(i%2==1){
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
+                turn++;
             }
 
             else{
@@ -139,8 +140,7 @@ public class Card {
                         Deck.remove(0);
                     }
                     else{
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                 }
@@ -149,7 +149,7 @@ public class Card {
 
         else if(P4 == null){
 
-            if (first_turn){
+            if (turn == 1){
 
                 for(int i =0;i<16;i++){
 
@@ -170,6 +170,7 @@ public class Card {
                         Deck.remove(0);
                     }
                 }
+                turn++;
             }
 
             else
@@ -190,7 +191,7 @@ public class Card {
                 }
         }
         else {
-            if (first_turn) {
+            if (turn == 1) {
                 for (int i = 0; i < 20; i++) {
                     if (i < 4) {
                         Table.add(Deck.get(0));
@@ -215,6 +216,7 @@ public class Card {
                     }
 
                 }
+                turn++;
             }
             else {
                 for (int i = 0; i < 16; i++) {
@@ -237,6 +239,5 @@ public class Card {
                 }
             }
         }
-        first_turn = false;
     }
 }

@@ -4,8 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class Gameflow{
 
-    static Random r = new Random(System.currentTimeMillis());
-private static boolean a=true;
+static Random r = new Random(System.currentTimeMillis());
 
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
@@ -98,18 +97,18 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
     public static void game (int player_number){
          if(player_number==2){
             while(true){
-            Card.dealer(Table, user, regular, novicePlayer, expert, Deck, a);
+            Card.dealer(Table, user, expert, regular, novicePlayer, Deck);
             for(int i = 0;i<4;i++){
                 choose_card(user, Table);
                 System.out.println("*******");
                 printOutTable();
                 System.out.println("********");
-                choose_card(regular, Table);
+                choose_card(expert, Table);
                 System.out.println("AI played");
                 System.out.println("*********");
                 printOutTable();
             }
-            if(Deck == null) break;
+            if(Deck.size() == 0) break;
         }
 
     }

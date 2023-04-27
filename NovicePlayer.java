@@ -6,7 +6,6 @@ public class NovicePlayer extends User implements Player{
     private static int tempnumber;
     private ArrayList<Card>Novice_Collected_card;
     private static int Novicepoint;
-    private ArrayList<Card>NoviceHand = new ArrayList<Card>();
 
     private  ArrayList<Card>Templist = new ArrayList<Card>();
 
@@ -14,14 +13,12 @@ public class NovicePlayer extends User implements Player{
 
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
-        index--;
-        if(NoviceHand.get(index) != null){
-            Table.add(NoviceHand.get(index));
-            NoviceHand.remove(index);
+        if(super.getPhand().get(index) != null){
+            Table.add(super.getPhand().get(index));
+            super.getPhand().remove(index);
         }
-
+        if (Table.size() > 1) {
         if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
-
             if (Table.size()==2){
                 System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                 for (int i=0;i<2;i++){
@@ -42,7 +39,6 @@ public class NovicePlayer extends User implements Player{
                 }
             }
 
-
             if(misti){
                 Templist.remove(Templist.size()-1);
                 Templist.remove(Templist.size()-2);
@@ -51,7 +47,9 @@ public class NovicePlayer extends User implements Player{
 
             point_sum(Templist);
             Table.clear();
+            
         }
+    }
 
 
     }
