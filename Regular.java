@@ -11,7 +11,7 @@ public class Regular implements Player{
 
 
     @Override
-    public void play_card(ArrayList<Card> RegularHand, ArrayList<Card> Table, int index) {
+    public void play_card( ArrayList<Card> Table, int index) {
         index--;
         for (int i=0;i<RegularHand.size();i++){
 

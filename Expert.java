@@ -24,7 +24,7 @@ public class Expert implements Player {
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist
 
     @Override
-    public void play_card(ArrayList<Card> ExpertHand, ArrayList<Card> Table, int index) {
+    public void play_card( ArrayList<Card> Table, int index) {
         index--;
         for (int i = 0; i < ExpertHand.size(); i++) {
             Table_tracker(Table,ExperTemplist);

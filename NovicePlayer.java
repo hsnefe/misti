@@ -13,7 +13,7 @@ public class NovicePlayer  implements Player{
 
 
     @Override
-    public void play_card(ArrayList<Card> NoviceHand, ArrayList<Card> Table, int index) {
+    public void play_card( ArrayList<Card> Table, int index) {
         index--;
         if(NoviceHand.get(index) != null){
             Table.add(NoviceHand.get(index));

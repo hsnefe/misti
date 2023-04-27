@@ -78,7 +78,7 @@ public class Card {
             String a = reader.nextLine();
             String[] arr = new String[3];
             arr = a.split(",");
-            Card card = new Card(Integer.parseInt(arr[2]),arr[0],arr[1]);
+            Card card = new Card(Integer.parseInt(arr[2]),arr[1],arr[0]);
             the_List.add(card);
             i++;
         }
