@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Gameflow{
 
     static Random r = new Random(System.currentTimeMillis());
-//private boolean a=true;
+private static boolean a=true;
 
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
@@ -77,7 +77,7 @@ public void setNovicePlayer(NovicePlayer novicePlayer) {
 static Scanner sc= new Scanner (System.in);
 
 public static  void choose_card(User P1,ArrayList<Card> Table){
-         int rand= r.nextInt(4);
+         int rand= r.nextInt(P1.getPhand().size());
         if(P1.getClass()==user.getClass()){
             for(int i=0;i<P1.getPhand().size();i++){
                 System.out.println((i+1)+") "+ P1.getPhand().get(i).getRank()+P1.getPhand().get(i).getSuit());
@@ -85,20 +85,29 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
     int choosed = sc.nextInt()-1;
     P1.play_card(Table, choosed);
         }
-
         else P1.play_card(Table,rand);
 }
-    
+    public static void printOutTable(){
+        System.out.println("Table:");
+        for(int i = 0;i<Table.size();i++){
+            System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());}
+    }
 
 
 
     public static void game (int player_number){
          if(player_number==2){
             while(true){
-            Card.dealer(Table, user, regular, novicePlayer, expert, Deck, true);
+            Card.dealer(Table, user, regular, novicePlayer, expert, Deck, a);
             for(int i = 0;i<4;i++){
                 choose_card(user, Table);
+                System.out.println("*******");
+                printOutTable();
+                System.out.println("********");
                 choose_card(regular, Table);
+                System.out.println("AI played");
+                System.out.println("*********");
+                printOutTable();
             }
             if(Deck == null) break;
         }

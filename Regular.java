@@ -2,73 +2,49 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Regular extends User implements Player{
-    private static boolean misti;
     private static int tempnumber;
     private ArrayList<Card>Regular_Collected_card;
     private static int Regularpoint;
-    private ArrayList<Card>RegularHand = new ArrayList<Card>();
     private  ArrayList<Card>Templist = new ArrayList<Card>();
 
 
     @Override
-    public void play_card( ArrayList<Card> Table, int index) {
-        index--;
-        for (int i=0;i<RegularHand.size();i++){
-
-            if (Table.get(0)!=null){
-
-                if (Objects.equals(Table.get(Table.size() - 1).getRank(), RegularHand.get(i).getRank())){
-                Table.add(RegularHand.get(i));
+    public void play_card( ArrayList<Card> Table, int index){
+        if (Table!=null){
+        for (int i=0;i<super.getPhand().size();i++){
+                if(Table.size()!= 0&& super.getPhand()!=null){
+                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())){
+                        if (Table.size()==2){
+                            System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
+                            for (int j=0;j<2;j++){
+                                tempnumber+=Table.get(j).getPoint();
+                            }
+                            tempnumber*=5;
+                            point_sum(Templist);
+                        for(int j=Table.size();j<Table.size();j++){
+                            Regular_Collected_card.add(Table.get(j));
+                        }
+                        }
+                    Table.add(super.getPhand().get(i));
+                    Table.clear();
+                    }
+    
+                    else if(super.getPhand().get(i).getRank()=="11"){
+                        Table.add(super.getPhand().get(i));
+                        for(int j=Table.size();j<Table.size();j++){
+                            Regular_Collected_card.add(Table.get(j));
+                        }
+                        Table.clear();
+                    }
                 }
-
-                else if(RegularHand.get(i).getRank()=="11"){
-                    Table.add(RegularHand.get(i));
-                }
-
-                else if(RegularHand.get(index) != null){
-                    Table.add(RegularHand.get(index));
-                    RegularHand.remove(index);
-                }
-
-            }
-
-            else if(RegularHand.get(index) != null){
-                Table.add(RegularHand.get(index));
-                RegularHand.remove(index);
+        }
+        if(Table != null&& super.getPhand()!=null){
+            if(super.getPhand().get(index) != null){
+                Table.add(super.getPhand().get(index));
+                super.getPhand().remove(index);
             }
         }
-
-        if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
-
-            if (Table.size()==2){
-                System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
-                for (int i=0;i<2;i++){
-                    tempnumber+=Table.get(i).getPoint();
-                }
-                misti = true;
-                tempnumber*=5;
-
-            }
-
-            else {
-                for(int i=Table.size();i<Table.size();i++){
-
-                    Templist.add(Table.get(i));
-                    Regular_Collected_card.add(Table.get(i));
-
-                }
-            }
-
-            if(misti){
-                Templist.remove(Templist.size()-1);
-                Templist.remove(Templist.size()-2);
-            }
-
-
-            point_sum(Templist);
-            Table.clear();
         }
-
     }
 
     @Override
