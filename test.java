@@ -4,13 +4,6 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Test{
-    static Scanner sc= new Scanner (System.in);
-    public static  void choose_card(User P1,ArrayList<Card> Table){
-        System.out.println("1)"+P1.getPhand().get(0).getRank()+P1.getPhand().get(0).getSuit()+"\n2)"+P1.getPhand().get(1).getRank()+P1.getPhand().get(1).getSuit());
-        System.out.println("3)"+P1.getPhand().get(2).getRank()+P1.getPhand().get(2).getSuit()+"\n4)"+P1.getPhand().get(3).getRank()+P1.getPhand().get(3).getSuit());
-        int choosed = sc.nextInt()-1;
-        P1.play_card(Table, choosed);
-    }
     public static void main(String[] args) throws InterruptedException {
         ArrayList<Card>Table = new ArrayList<Card>();
         ArrayList<Card>Cardsa = new ArrayList<Card>();
@@ -55,8 +48,7 @@ public class Test{
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());
         }
-        System.out.println("****************");
-        choose_card(P1, Table);
+        System.out.println("***************");
         System.out.println("Table:");
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());

@@ -162,8 +162,7 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if (i%3==1){
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i%3==2){
@@ -181,8 +180,7 @@ public class Card {
                         Deck.remove(0);
                     }
                     if (i%3==1){
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(0);
                     }
                     if (i%3==2){
@@ -204,8 +202,7 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if (i % 4 == 1) {
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i % 4 == 2) {
@@ -226,8 +223,7 @@ public class Card {
                         Deck.remove(0);
                     }
                     else if (i % 4 == 1) {
-                        P2.getPhand()
-                .add(Deck.get(0));
+                        P2.getPhand().add(Deck.get(0));
                         Deck.remove(Deck.get(0));
                     }
                     else if (i % 4 == 2) {
@@ -241,5 +237,6 @@ public class Card {
                 }
             }
         }
+        first_turn = false;
     }
 }

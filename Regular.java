@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Regular implements Player{
+public class Regular extends User implements Player{
     private static boolean misti;
     private static int tempnumber;
     private ArrayList<Card>Regular_Collected_card;

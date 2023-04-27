@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Expert implements Player {
+public class Expert extends User implements Player {
     private static int Counter_1=0;//A
     private static int Counter_2=0;
     private static int Counter_3=0;
@@ -25,7 +25,7 @@ public class Expert implements Player {
 
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
-        index--;
+        
         for (int i = 0; i < ExpertHand.size(); i++) {
             Table_tracker(Table,ExperTemplist);
             if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
@@ -117,6 +117,7 @@ public class Expert implements Player {
                 ExpertHand.remove(index);
             }
         }
+        index--;
     }
 
     @Override
