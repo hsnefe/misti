@@ -109,7 +109,7 @@ public class Card {
     }
     public static void dealer(ArrayList<Card> Table, User P1, User P2, User P3, User P4,ArrayList<Card> Deck, boolean first_turn){
 
-        if(P3.getPhand() == null){
+        if(P3 == null){
 
             if(first_turn){
 
@@ -147,7 +147,7 @@ public class Card {
             }
         }
 
-        else if(P4.getPhand() == null){
+        else if(P4 == null){
 
             if (first_turn){
 

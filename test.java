@@ -8,16 +8,16 @@ public class Test{
         ArrayList<Card>Table = new ArrayList<Card>();
         ArrayList<Card>Cardsa = new ArrayList<Card>();
         User P1 = new User();
-        User P2 = new User();
-        User P3 = new User();
-        User P4 = new User();
+        Expert P2 = new Expert();
+        NovicePlayer P3 = new NovicePlayer();
+        Regular P4 = new Regular();
         Formatter f = null;
         FileWriter fw = null;
         Card.deck_writer(f, fw);
         Cardsa = Card.deck_creator();
         Card.shuffler(Cardsa);
         Card.cutter(Cardsa, 5);
-
+/* 
         for(int i=0;i<Cardsa.size();i++){
             System.out.println(Cardsa.get(i).getRank()+Cardsa.get(i).getSuit()+" "+Cardsa.get(i).getPoint());
         }
@@ -52,6 +52,8 @@ public class Test{
         System.out.println("Table:");
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());
-        }
+        }*/
+        Gameflow the_game = new Gameflow(Table, P1, P4, null, null, Cardsa);
+        the_game.game(2);
     }
 }
