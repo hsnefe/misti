@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class Regular extends User {
     private static int tempnumber;
-    private ArrayList<Card>Regular_Collected_card;
+    private ArrayList<Card>Regular_Collected_card = new ArrayList<Card>();
     private static int Regularpoint;
     private  ArrayList<Card>Templist = new ArrayList<Card>();
 
@@ -17,23 +17,22 @@ public class Regular extends User {
         for (int i=0;i<super.getPhand().size();i++){
                 if(Table.size() != 0&& super.getPhand()!=null){
                     if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())){
-                        if (Table.size()==2){
+                        if (Table.size()==1){
                             System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
-                            for (int j=0;j<2;j++){
-                                tempnumber+=Table.get(j).getPoint();
-                            }
+                            tempnumber+=Table.get(0).getPoint()+super.getPhand().get(i).getPoint();
                             tempnumber*=5;
                             point_sum(Templist);
-                        for(int j=0;j<Table.size();j++){
-                            Regular_Collected_card.add(Table.get(j));
-                        }
+                            Regular_Collected_card.add(Table.get(0));
                         }
                         Table.add(super.getPhand().get(i));
+                        super.getPhand().remove(i);
                         Table.clear();
+                        return;
                     }
     
                     else if(super.getPhand().get(i).getRank()=="10"){
                         Table.add(super.getPhand().get(i));
+                        super.getPhand().remove(i);
                         for(int j=0;j<Table.size();j++){
                             Regular_Collected_card.add(Table.get(j));
                         }
@@ -41,12 +40,13 @@ public class Regular extends User {
                     }
                 }
         }
-        if(Table != null&& super.getPhand()!=null){
+        if(Table.size()>=0&& super.getPhand()!=null){
             if(super.getPhand().get(index) != null){
                 Table.add(super.getPhand().get(index));
                 super.getPhand().remove(index);
             }
         }
+
         }
         System.out.println("***********");
         System.out.println("ai eli:");
