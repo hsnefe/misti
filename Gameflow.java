@@ -97,13 +97,16 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
     public static void game (int player_number){
          if(player_number==2){
             while(true){
-            Card.dealer(Table, user, regular, expert, novicePlayer, Deck);
+            Card.dealer(Table, user, novicePlayer, expert, regular, Deck);
             for(int i = 0;i<4;i++){
+                System.out.println("*******");
+                printOutTable();
+                System.out.println("*******");
                 choose_card(user, Table);
                 System.out.println("*******");
                 printOutTable();
                 System.out.println("********");
-                choose_card(regular, Table);
+                choose_card(novicePlayer, Table);
                 System.out.println("*********");
                 System.out.println("AI played");
                 System.out.println("*********");

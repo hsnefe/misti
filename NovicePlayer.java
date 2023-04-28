@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class NovicePlayer extends User {
     private static boolean misti;
     private static int tempnumber;
-    private ArrayList<Card>Novice_Collected_card;
+    private ArrayList<Card>Novice_Collected_card = new ArrayList<Card>();
     private static int Novicepoint;
 
     private  ArrayList<Card>Templist = new ArrayList<Card>();
@@ -13,29 +13,40 @@ public class NovicePlayer extends User {
 
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
-        if(super.getPhand().get(index) != null){
+        System.out.println("**********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
+        
+        if(super.getPhand().get(index) != null) {
+            if (super.getPhand().get(index).getRank().equals("10")) {
+                Table.add(super.getPhand().get(index));
+                super.getPhand().remove(index);
+                for(int j=0;j<Table.size();j++){
+                    Novice_Collected_card.add(Table.get(j));
+                }
+                Table.clear();
+            } 
+            else {
             Table.add(super.getPhand().get(index));
             super.getPhand().remove(index);
+            }
         }
-        if (Table.size() > 1) {
+        
+        if (Table.size() > 1) {    
+
         if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
-            if (Table.size()==2){
+            if (Table.size()==1){
                 System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
-                for (int i=0;i<2;i++){
-                    tempnumber+=Table.get(i).getPoint();
-                }
+                tempnumber+=Table.get(0).getPoint()+super.getPhand().get(index).getPoint();
                 misti = true;
                 tempnumber*=5;
 
             }
 
-
             else {
                 for(int i=0;i<Table.size();i++){
-
                     Templist.add(Table.get(i));
                     Novice_Collected_card.add(Table.get(i));
-
                 }
             }
 
@@ -44,14 +55,14 @@ public class NovicePlayer extends User {
                 Templist.remove(Templist.size()-2);
             }
 
-
             point_sum(Templist);
             Table.clear();
             
         }
     }
-
-
+    System.out.println("**********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
     }
 
     @Override

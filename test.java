@@ -52,7 +52,7 @@ public class Test{
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());
         }*/
-        Gameflow the_game = new Gameflow(Table, P1, P4, null, null, Cardsa);
+        Gameflow the_game = new Gameflow(Table, P1, null, null, P3, Cardsa);
         Gameflow.game(2);
     }
 }
