@@ -32,7 +32,7 @@ public  class User implements Player {
 
 
 
-    public   void play_card(ArrayList<Card> Table, int index){
+    public void play_card(ArrayList<Card> Table, int index){
         if(PHand.get(index) != null){
             Table.add(PHand.get(index));
             PHand.remove(index);
@@ -86,5 +86,11 @@ public  class User implements Player {
         }
         Ppoint+=tempnumber;
 
+    }
+
+    public void printAiHand(ArrayList <Card> aihand) {
+        for (int i=0;i<aihand.size();i++) {
+            System.out.println(aihand.get(i).getRank() + aihand.get(i).getSuit());
+        }
     }
 }

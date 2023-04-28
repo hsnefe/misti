@@ -116,7 +116,7 @@ public class Expert extends User  {
 
                 }
 
-                else if (Table.size()>3 && super.getPhand().size()>1 && super.getPhand().get(i).getRank() == "11") {// 11==J
+                else if (Table.size()>3 && super.getPhand().size()>1 && super.getPhand().get(i).getRank() == "10") {
                     Table.add(super.getPhand().get(i));
                     for(int j=0;j<Table.size();j++){
                         Expert_Collected_card.add(Table.get(j));

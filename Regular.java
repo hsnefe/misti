@@ -10,9 +10,12 @@ public class Regular extends User {
 
     @Override
     public void play_card( ArrayList<Card> Table, int index){
+        System.out.println("**********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
         if (Table!=null){
         for (int i=0;i<super.getPhand().size();i++){
-                if(Table.size()!= 0&& super.getPhand()!=null){
+                if(Table.size() != 0&& super.getPhand()!=null){
                     if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())){
                         if (Table.size()==2){
                             System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
@@ -21,15 +24,15 @@ public class Regular extends User {
                             }
                             tempnumber*=5;
                             point_sum(Templist);
-                        for(int j=Table.size();j<Table.size();j++){
+                        for(int j=0;j<Table.size();j++){
                             Regular_Collected_card.add(Table.get(j));
                         }
                         }
-                    Table.add(super.getPhand().get(i));
-                    Table.clear();
+                        Table.add(super.getPhand().get(i));
+                        Table.clear();
                     }
     
-                    else if(super.getPhand().get(i).getRank()=="11"){
+                    else if(super.getPhand().get(i).getRank()=="10"){
                         Table.add(super.getPhand().get(i));
                         for(int j=0;j<Table.size();j++){
                             Regular_Collected_card.add(Table.get(j));
@@ -45,6 +48,9 @@ public class Regular extends User {
             }
         }
         }
+        System.out.println("***********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
     }
 
     @Override
