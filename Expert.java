@@ -33,7 +33,8 @@ public class Expert extends User  {
         for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
             if (Table.size() > 1) {
-                if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
+                if(Table.size()!= 0&& super.getPhand()!=null){
+                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
                     if (Table.size() == 2) {
                     System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                     for (int j = 0; j < 2; j++) {
@@ -64,6 +65,7 @@ public class Expert extends User  {
                 Table.clear();
             }
         }
+    }
 
             else if (Table.get(0) != null) {
                     for (int b=0;b<4;b++){
@@ -116,7 +118,13 @@ public class Expert extends User  {
 
                 else if (Table.size()>3 && super.getPhand().size()>1 && super.getPhand().get(i).getRank() == "11") {// 11==J
                     Table.add(super.getPhand().get(i));
+                    for(int j=0;j<Table.size();j++){
+                        Expert_Collected_card.add(Table.get(j));
+                    }
+                    Table.clear();
+                    System.out.println("masa temizlendi");
                 }
+
             }
             else  {
                 Table.add(super.getPhand().get(index));

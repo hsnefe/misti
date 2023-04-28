@@ -31,7 +31,7 @@ public class Regular extends User {
     
                     else if(super.getPhand().get(i).getRank()=="11"){
                         Table.add(super.getPhand().get(i));
-                        for(int j=Table.size();j<Table.size();j++){
+                        for(int j=0;j<Table.size();j++){
                             Regular_Collected_card.add(Table.get(j));
                         }
                         Table.clear();
