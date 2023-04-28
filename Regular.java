@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Regular extends User implements Player{
+public class Regular extends User {
     private static int tempnumber;
     private ArrayList<Card>Regular_Collected_card;
     private static int Regularpoint;

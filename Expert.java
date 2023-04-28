@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Expert extends User implements Player {
+public class Expert extends User  {
     private static int Counter_1=0;//A
     private static int Counter_2=0;
     private static int Counter_3=0;
@@ -24,12 +24,17 @@ public class Expert extends User implements Player {
 
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
+        /*if(PHand.get(index) != null){
+            Table.add(PHand.get(index));
+            PHand.remove(index);
+        }*/
+    
         
         for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
             if (Table.size() > 1) {
-            if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
-                if (Table.size() == 2) {
+                if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
+                    if (Table.size() == 2) {
                     System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                     for (int j = 0; j < 2; j++) {
                         tempnumber += Table.get(j).getPoint();
@@ -118,6 +123,13 @@ public class Expert extends User implements Player {
                 super.getPhand().remove(index);
             }
         }
+        
+        if(Table != null&& super.getPhand()!=null){
+            if(super.getPhand().get(index) != null){
+                Table.add(super.getPhand().get(index));
+                super.getPhand().remove(index);
+            }
+        }
     }
 
     @Override
@@ -132,6 +144,7 @@ public class Expert extends User implements Player {
 
         Expertpoint += tempnumber;
     }
+    
     public static void Table_tracker(ArrayList<Card>Table,ArrayList<Card>ExperTemplist){
         ExperTemplist.addAll(Table);
 

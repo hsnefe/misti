@@ -1,7 +1,7 @@
 import java.util.Objects;
 import java.util.ArrayList;
 
-public class NovicePlayer extends User implements Player{
+public class NovicePlayer extends User {
     private static boolean misti;
     private static int tempnumber;
     private ArrayList<Card>Novice_Collected_card;
@@ -31,7 +31,7 @@ public class NovicePlayer extends User implements Player{
 
 
             else {
-                for(int i=Table.size();i<Table.size();i++){
+                for(int i=0;i<Table.size();i++){
 
                     Templist.add(Table.get(i));
                     Novice_Collected_card.add(Table.get(i));

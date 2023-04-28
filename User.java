@@ -7,6 +7,7 @@ public  class User implements Player {
     private ArrayList<Card>User_Collected_card = new ArrayList<Card>();
     private ArrayList<Card> PHand = new ArrayList<Card>();
     private static int Ppoint;
+
     public ArrayList<Card> getPhand() {
         return PHand;
     }
@@ -38,9 +39,8 @@ public  class User implements Player {
         }
         
         if (Table.size() > 1) {
-        if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
-            
-            if (Table.size()==2){
+            if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){
+                if (Table.size()==2){
                 System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                 for (int i=0;i<2;i++){
                     tempnumber+=Table.get(i).getPoint();

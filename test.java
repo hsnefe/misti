@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.io.FileWriter;
-import java.util.Scanner;
 
-public class Test{
-    public static void main(String[] args) throws InterruptedException {
+public class Test{   
+     public static void main(String[] args) throws InterruptedException {
         ArrayList<Card>Table = new ArrayList<Card>();
         ArrayList<Card>Cardsa = new ArrayList<Card>();
         User P1 = new User();
@@ -54,6 +53,6 @@ public class Test{
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());
         }*/
         Gameflow the_game = new Gameflow(Table, P1, null, P2, null, Cardsa);
-        the_game.game(2);
+        Gameflow.game(2);
     }
 }
