@@ -76,7 +76,8 @@ public void setNovicePlayer(NovicePlayer novicePlayer) {
 static Scanner sc= new Scanner (System.in);
 
 public static  void choose_card(User P1,ArrayList<Card> Table){
-         int rand= r.nextInt(P1.getPhand().size());
+        int rand=0;
+        if(P1.getPhand().size()!=0)  rand= r.nextInt(P1.getPhand().size());
         if(P1.getClass()==user.getClass()){
             for(int i=0;i<P1.getPhand().size();i++){
                 System.out.println((i+1)+") "+ P1.getPhand().get(i).getRank()+P1.getPhand().get(i).getSuit());
@@ -95,9 +96,10 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
 
 
     public static void game (int player_number){
+        Expert.expertstart();
          if(player_number==2){
             while(true){
-            Card.dealer(Table, user, novicePlayer, expert, regular, Deck);
+            Card.dealer(Table, user,expert , novicePlayer, regular, Deck);
             for(int i = 0;i<4;i++){
                 System.out.println("*******");
                 printOutTable();
@@ -106,7 +108,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                 System.out.println("*******");
                 printOutTable();
                 System.out.println("********");
-                choose_card(novicePlayer, Table);
+                choose_card(expert, Table);
                 System.out.println("*********");
                 System.out.println("AI played");
                 System.out.println("*********");

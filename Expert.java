@@ -4,11 +4,11 @@ import java.util.Objects;
 public class Expert extends User  {
     private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
-    private ArrayList<Card> Expert_Collected_card;
+    private ArrayList<Card> Expert_Collected_card= new ArrayList<Card>();
     private static int Expertpoint;
     private ArrayList<Card> Templist = new ArrayList<Card>();
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist
-    public void expertstart(){
+    public static  void expertstart(){
         for(int i =0;i<13;i++) card_counter.add(0);
     }
     @Override
@@ -17,6 +17,13 @@ public class Expert extends User  {
             Table.add(PHand.get(index));
             PHand.remove(index);
         }*/
+        System.out.println("**********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
+
+
+
+        int tempsize=Table.size();
         for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
             if (Table.size() > 0) {
@@ -45,23 +52,52 @@ public class Expert extends User  {
                     for(int j= 0;j<13;j++){
                         if (card_counter.get(j)==3){
                             Table.add(super.getPhand().get(b));
+                            super.getPhand().remove(b);
                             break;
                         }
+                        if(Table.size()!=tempsize) break;
                     }
                     if(Table.size()==0){
                         Table.add(super.getPhand().get(index));
                         super.getPhand().remove(index);
+                        break;
                     }
                 }
             }
+            
         }
         
-        if(Table != null&& super.getPhand()!=null){
-            if(super.getPhand().get(index) != null){
-                Table.add(super.getPhand().get(index));
-                super.getPhand().remove(index);
+
+        if(Table.size()==tempsize){
+            for(int i=0;i<super.getPhand().size();i++){
+                if(super.getPhand().get(i).getRank().equals("10")){
+                    Table.add(super.getPhand().get(i));
+                    super.getPhand().remove(i);
+                    Expert_Collected_card.addAll(Table);
+                    ExperTemplist.addAll(Expert_Collected_card);
+                    point_sum(Expert_Collected_card);
+                    Table.clear();
+                    System.out.println("masa temizlendi");
+                }
             }
         }
+
+
+
+
+
+        if(Table.size() == tempsize&& super.getPhand()!=null){
+            if(super.getPhand().size()>0){ 
+                if(super.getPhand().get(index) != null){
+                Table.add(super.getPhand().get(index));
+                super.getPhand().remove(index);
+               }
+            }
+        }
+
+        System.out.println("**********");
+        System.out.println("ai eli:");
+        super.printAiHand(super.getPhand());
     }
     @Override
     public void point_sum(ArrayList<Card> SummedCards) {
