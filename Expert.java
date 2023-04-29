@@ -2,133 +2,57 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Expert extends User  {
-    private static int Counter_1=0;//A
-    private static int Counter_2=0;
-    private static int Counter_3=0;
-    private static int Counter_4=0;
-    private static int Counter_5=0;
-    private static int Counter_6=0;
-    private static int Counter_7=0;
-    private static int Counter_8=0;
-    private static int Counter_9=0;
-    private static int Counter_10=0;
-    private static int Counter_11=0;//J
-    private static int Counter_12=0;//Q
-    private static int Counter_13=0;//K
-    private static boolean misti;
+    private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
     private ArrayList<Card> Expert_Collected_card;
     private static int Expertpoint;
     private ArrayList<Card> Templist = new ArrayList<Card>();
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist
-
+    public void expertstart(){
+        for(int i =0;i<13;i++) card_counter.add(0);
+    }
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
         /*if(PHand.get(index) != null){
             Table.add(PHand.get(index));
             PHand.remove(index);
         }*/
-    
-        
         for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
-            if (Table.size() > 1) {
+            if (Table.size() > 0) {
                 if(Table.size()!= 0&& super.getPhand()!=null){
-                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())) {
-                    if (Table.size() == 2) {
-                    System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
-                    for (int j = 0; j < 2; j++) {
-                        tempnumber += Table.get(j).getPoint();
-                    }
-                    misti = true;
-                    tempnumber *= 5;
-
-                }
-
-
-                else {
-                    for (int k = 0; k < Table.size(); k++) {
-
-                        Templist.add(Table.get(k));
-                        Expert_Collected_card.add(Table.get(k));
-
+                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
+                        if (Table.size() == 1) {
+                        System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
+                        tempnumber += Table.get(0).getPoint()+ super.getPhand().get(i).getPoint();
+                        tempnumber *= 5;
+                        }
+                        else {
+                            Templist.addAll(Table);
+                            Templist.add(super.getPhand().get(i));
+                            Expert_Collected_card.addAll(Table);
+                            Expert_Collected_card.add(super.getPhand().get(i));
+                            point_sum(Templist);
+                        }
+                        Table.add(super.getPhand().get(i));
+                        super.getPhand().remove(i);
+                        Table.clear();
                     }
                 }
-
-                if (misti) {
-                    Templist.remove(Templist.size() - 1);
-                    Templist.remove(Templist.size() - 2);
-                }
-
-
-                point_sum(Templist);
-                Table.clear();
             }
-        }
-    }
-
-            else if (Table.get(0) != null) {
-                    for (int b=0;b<4;b++){
-                        if (Counter_1==3){
+            else{
+                for (int b=0;b<super.getPhand().size();b++){
+                    for(int j= 0;j<13;j++){
+                        if (card_counter.get(j)==3){
                             Table.add(super.getPhand().get(b));
+                            break;
                         }
-                        else if (Counter_2==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_3==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_4==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_5==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_6==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_7==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_8==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_9==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_10==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_11==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_12==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-                        else if (Counter_13==3){
-                            Table.add(super.getPhand().get(b));
-                        }
-
                     }
-
-                if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
-                    Table.add(super.getPhand().get(i));
-
-                }
-
-                else if (Table.size()>3 && super.getPhand().size()>1 && super.getPhand().get(i).getRank() == "10") {
-                    Table.add(super.getPhand().get(i));
-                    for(int j=0;j<Table.size();j++){
-                        Expert_Collected_card.add(Table.get(j));
+                    if(Table.size()==0){
+                        Table.add(super.getPhand().get(index));
+                        super.getPhand().remove(index);
                     }
-                    Table.clear();
-                    System.out.println("masa temizlendi");
                 }
-
-            }
-            else  {
-                Table.add(super.getPhand().get(index));
-                super.getPhand().remove(index);
             }
         }
         
@@ -139,7 +63,6 @@ public class Expert extends User  {
             }
         }
     }
-
     @Override
     public void point_sum(ArrayList<Card> SummedCards) {
         int temp_point = 0;
@@ -149,53 +72,16 @@ public class Expert extends User  {
             temp_point += SummedCards.get(i).getPoint();
             Expertpoint += temp_point;
         }
-
         Expertpoint += tempnumber;
     }
     
     public static void Table_tracker(ArrayList<Card>Table,ArrayList<Card>ExperTemplist){
         ExperTemplist.addAll(Table);
-
         for (int i =0; i<Table.size();i++){
-            if (Table.get(i).getRank()=="1"){
-                Counter_1++;
-            }
-            if (Table.get(i).getRank()=="2"){
-                Counter_2++;
-            }
-            if (Table.get(i).getRank()=="3"){
-                Counter_3++;
-            }
-            if (Table.get(i).getRank()=="4"){
-                Counter_4++;
-            }
-            if (Table.get(i).getRank()=="5"){
-                Counter_5++;
-            }
-            if (Table.get(i).getRank()=="6"){
-                Counter_6++;
-            }
-            if (Table.get(i).getRank()=="7"){
-                Counter_7++;
-            }
-            if (Table.get(i).getRank()=="8"){
-                Counter_8++;
-            }
-            if (Table.get(i).getRank()=="9"){
-                Counter_9++;
-            }
-            if (Table.get(i).getRank()=="10"){
-                Counter_10++;
-            }
-            if (Table.get(i).getRank()=="11"){
-                Counter_11++;
-            }
-            if (Table.get(i).getRank()=="12"){
-                Counter_12++;
-            }
-            if (Table.get(i).getRank()=="13"){
-                Counter_13++;
-            }
+            int temp =card_counter.get(Integer.parseInt(Table.get(i).getRank()));
+            card_counter.remove(Integer.parseInt(Table.get(i).getRank()));
+            temp++;
+            card_counter.add(temp);
         }
     }
 }
