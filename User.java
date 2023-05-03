@@ -30,13 +30,21 @@ public  class User implements Player {
 
     public ArrayList<Card> Templist = new ArrayList<Card>();
 
+    public  void jchecker(ArrayList<Card>Cardlist){
+        if(Cardlist.get(Cardlist.size()-1).getRank().equals("10")){
+        Cardlist.clear();
+        }
+    }
+
 
 
     public void play_card(ArrayList<Card> Table, int index){
         if(PHand.get(index) != null){
             Table.add(PHand.get(index));
             PHand.remove(index);
+            jchecker(Table);
         }
+
         
         if (Table.size() > 1) {
             if (Objects.equals(Table.get(Table.size() - 1).getRank(), Table.get(Table.size() - 2).getRank())){

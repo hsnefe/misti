@@ -30,7 +30,7 @@ public class Regular extends User {
                         return;
                     }
     
-                    else if(super.getPhand().get(i).getRank()=="10"){
+                    else if(super.getPhand().get(i).getRank().equals("10")){
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
                         for(int j=0;j<Table.size();j++){

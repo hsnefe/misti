@@ -2,15 +2,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Expert extends User  {
+
     private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
     private ArrayList<Card> Expert_Collected_card= new ArrayList<Card>();
     private static int Expertpoint;
     private ArrayList<Card> Templist = new ArrayList<Card>();
-    private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist
+    private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist;
+
     public static  void expertstart(){
         for(int i =0;i<13;i++) card_counter.add(0);
     }
+
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
         /*if(PHand.get(index) != null){
@@ -33,6 +36,7 @@ public class Expert extends User  {
                         System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                         tempnumber += Table.get(0).getPoint()+ super.getPhand().get(i).getPoint();
                         tempnumber *= 5;
+                        
                         }
                         else {
                             Templist.addAll(Table);
@@ -40,6 +44,7 @@ public class Expert extends User  {
                             Expert_Collected_card.addAll(Table);
                             Expert_Collected_card.add(super.getPhand().get(i));
                             point_sum(Templist);
+                            
                         }
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
@@ -99,6 +104,8 @@ public class Expert extends User  {
         System.out.println("ai eli:");
         super.printAiHand(super.getPhand());
     }
+
+
     @Override
     public void point_sum(ArrayList<Card> SummedCards) {
         int temp_point = 0;
