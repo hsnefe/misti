@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Expert extends User  {
+    private boolean misti;
 
     private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
@@ -34,11 +35,14 @@ public class Expert extends User  {
                     if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
                         if (Table.size() == 1) {
                         System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
+                        misti=true;
                         tempnumber += Table.get(0).getPoint()+ super.getPhand().get(i).getPoint();
                         tempnumber *= 5;
-                        
+                        Expertpoint+=tempnumber;//tempnumber her mişti sonunda 0 lanmadığı için
+                        tempnumber=0;//her expert miştisinde 5 ile çarpılıyor düzeltildi burada
                         }
                         else {
+                            misti=false;
                             Templist.addAll(Table);
                             Templist.add(super.getPhand().get(i));
                             Expert_Collected_card.addAll(Table);
@@ -62,7 +66,7 @@ public class Expert extends User  {
                         }
                         if(Table.size()!=tempsize) break;
                     }
-                    if(Table.size()==0){
+                    if(Table.size()==0&& misti==false){//mişti yapınca burdan hata veriyo
                         Table.add(super.getPhand().get(index));
                         super.getPhand().remove(index);
                         break;
@@ -71,18 +75,17 @@ public class Expert extends User  {
             }
             
         }
-        
-
         if(Table.size()==tempsize){
             for(int i=0;i<super.getPhand().size();i++){
                 if(super.getPhand().get(i).getRank().equals("10")){
+                    if(Table.size()!=0 && super.getPhand().get(i).getRank().equals("10")){
                     Table.add(super.getPhand().get(i));
                     super.getPhand().remove(i);
                     Expert_Collected_card.addAll(Table);
                     ExperTemplist.addAll(Expert_Collected_card);
                     point_sum(Expert_Collected_card);
                     Table.clear();
-                    System.out.println("masa temizlendi");
+                    System.out.println("masa temizlendi");}
                 }
             }
         }
