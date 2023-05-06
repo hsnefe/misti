@@ -5,6 +5,10 @@ public class Regular extends User {
     private static int tempnumber;
     private ArrayList<Card>Regular_Collected_card = new ArrayList<Card>();
     private static int Regularpoint;
+    public static int getRegularpoint() {
+        return Regularpoint;
+    }
+
     private  ArrayList<Card>Templist = new ArrayList<Card>();
 
 

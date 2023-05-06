@@ -2,10 +2,13 @@ import java.util.Objects;
 import java.util.ArrayList;
 
 public class NovicePlayer extends User {
-    private static boolean misti;
     private static int tempnumber;
     private ArrayList<Card>Novice_Collected_card = new ArrayList<Card>();
     private static int Novicepoint;
+
+    public static int getNovicepoint() {
+        return Novicepoint;
+    }
 
     private  ArrayList<Card>Templist = new ArrayList<Card>();
 
@@ -38,9 +41,9 @@ public class NovicePlayer extends User {
             if (Table.size()==1){
                 System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                 tempnumber+=Table.get(0).getPoint()+super.getPhand().get(index).getPoint();
-                misti = true;
                 tempnumber*=5;
-
+                Templist.remove(Templist.size()-1);
+                Templist.remove(Templist.size()-2);
             }
 
             else {
@@ -49,12 +52,6 @@ public class NovicePlayer extends User {
                     Novice_Collected_card.add(Table.get(i));
                 }
             }
-
-            if(misti){
-                Templist.remove(Templist.size()-1);
-                Templist.remove(Templist.size()-2);
-            }
-
             point_sum(Templist);
             Table.clear();
             

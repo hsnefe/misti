@@ -3,12 +3,14 @@ import java.util.Objects;
 
 public class Expert extends User  {
     private boolean misti;
-   //private boolean Jexception;
-    private int temp_Experthandsize=super.getPhand().size();
     private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
     private ArrayList<Card> Expert_Collected_card= new ArrayList<Card>();
     private static int Expertpoint;
+    public static int getExpertpoint() {
+        return Expertpoint;
+    }
+
     private ArrayList<Card> Templist = new ArrayList<Card>();
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist;
 
