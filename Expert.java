@@ -3,7 +3,8 @@ import java.util.Objects;
 
 public class Expert extends User  {
     private boolean misti;
-
+   //private boolean Jexception;
+    private int temp_Experthandsize=super.getPhand().size();
     private static ArrayList<Integer> card_counter = new ArrayList<Integer>();
     private static int tempnumber;
     private ArrayList<Card> Expert_Collected_card= new ArrayList<Card>();
@@ -26,8 +27,8 @@ public class Expert extends User  {
         super.printAiHand(super.getPhand());
 
 
-
         int tempsize=Table.size();
+
         for (int i = 0; i < super.getPhand().size(); i++) {
             Table_tracker(Table,ExperTemplist);
             if (Table.size() > 0) {
@@ -54,6 +55,7 @@ public class Expert extends User  {
                         super.getPhand().remove(i);
                         Table.clear();
                     }
+                
                 }
             }
             else{
@@ -91,14 +93,14 @@ public class Expert extends User  {
         }
 
 
-
-
-
         if(Table.size() == tempsize&& super.getPhand()!=null){
             if(super.getPhand().size()>0){ 
                 if(super.getPhand().get(index) != null){
+                    if(super.getPhand().get(index).getRank()!=("10")){
+                        if(super.getPhand().get(index).getRank()!=Table.get(Table.size()-1).getRank()){
                 Table.add(super.getPhand().get(index));
-                super.getPhand().remove(index);
+                super.getPhand().remove(index);}
+            }
                }
             }
         }
