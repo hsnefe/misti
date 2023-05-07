@@ -44,7 +44,7 @@ public class Regular extends User {
                     }
                 }
         }
-        if(Table.size()>=0&& super.getPhand()!=null){
+        if(Table.size()>=0&& super.getPhand().size()>0){
             if(super.getPhand().get(index) != null){
                 Table.add(super.getPhand().get(index));
                 super.getPhand().remove(index);

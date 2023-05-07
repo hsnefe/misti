@@ -91,13 +91,43 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());}
     }
-    public static void game (int difficulty){
+    public static void set_game(){
+        int difficulty1 = 0;
+        int difficulty2=0;
+        int difficulty3=0;
         System.out.println("Choose number of players(2 to 4):");
         int player_size = sc.nextInt();
-        if(difficulty==1){
+        switch(player_size){
+            case(4):
+            System.out.println("Choose a difficulty for AI");
+            difficulty3 = sc.nextInt();
+            case(3):
+            System.out.println("Choose a difficulty for AI"); 
+            difficulty2 = sc.nextInt();
+            case(2):
+            System.out.println("Choose a difficulty for AI");
+            difficulty1 = sc.nextInt();
+            break;
+        }
+        game(player_size,difficulty1,difficulty2,difficulty3);
+    }
+    public static void game (int player_size,int difficulty1,int difficulty2,int difficulty3){
             if(player_size==2){
-                P4 = null;
-                P2 = null;
+                if(difficulty1==3){
+                    P3 = new Expert();
+                    P4 = null;
+                    P2 = null;
+                }
+                else if(difficulty1==2){
+                    P3 = new Regular();
+                    P4 = null;
+                    P2 = null;
+                }
+                else if(difficulty1 ==1){
+                    P3 = new NovicePlayer();
+                    P4 = null;
+                    P2 = null;
+                }
                 while(true){
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
                     for(int i = 0;i<4;i++){
@@ -118,154 +148,5 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     if(Deck.size() == 0) break;
                 }
             }
-            else if(player_size==3){
-                P2 = null;
-                while(true){
-                    Card.dealer(Table, user,P3 , P4, P2, Deck);
-                    for(int i = 0;i<4;i++){
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("*******");
-                        choose_card(user, Table);
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("********");
-                        choose_card(P3, Table);
-                        System.out.println("*********");
-                        System.out.println("AI1 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI2 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                    }
-                    if(Deck.size() == 0) break;
-                }
-            }
-            else if(player_size==4){
-                while(true){
-                    Card.dealer(Table, user,P3 , P4, P2, Deck);
-                    for(int i = 0;i<4;i++){
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("*******");
-                        choose_card(user, Table);
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("********");
-                        choose_card(P3, Table);
-                        System.out.println("*********");
-                        System.out.println("AI1 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI2 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI3 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                    }
-                    if(Deck.size() == 0) break;
-                }
-            }
-        }
-        if(difficulty ==3){
-            Expert.expertstart();
-            if(player_size==2){
-                P4=null;
-                P2=null;
-                while(true){
-                    Card.dealer(Table, user,P3 , P4, P2, Deck);
-                    for(int i = 0;i<4;i++){
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("*******");
-                        choose_card(user, Table);
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("********");
-                        choose_card(P3, Table);
-                        System.out.println("*********");
-                        System.out.println("AI played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                    }
-                    if(Deck.size() == 0) break;
-                }
-            }
-            else if(player_size==3){
-                P2=null;
-                while(true){
-                    Card.dealer(Table, user,P3 , P4, P2, Deck);
-                    for(int i = 0;i<4;i++){
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("*******");
-                        choose_card(user, Table);
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("********");
-                        choose_card(P3, Table);
-                        System.out.println("*********");
-                        System.out.println("AI1 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI2 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                    }
-                    if(Deck.size() == 0) break;
-                }
-            }
-            else if(player_size==4){
-                while(true){
-                    Card.dealer(Table, user,P3 , P4, P2, Deck);
-                    for(int i = 0;i<4;i++){
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("*******");
-                        choose_card(user, Table);
-                        System.out.println("*******");
-                        printOutTable();
-                        System.out.println("********");
-                        choose_card(P3, Table);
-                        System.out.println("*********");
-                        System.out.println("AI1 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI2 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                        choose_card(P4, Table);
-                        System.out.println("*********");
-                        System.out.println("AI3 played");
-                        System.out.println("*********");
-                        printOutTable();
-                        System.out.println("*********");
-                    }
-                    if(Deck.size() == 0) break;
-                }
-            }
-        }
     }
 }

@@ -53,7 +53,6 @@ public  class User implements Player {
                 for (int i=0;i<2;i++){
                     tempnumber+=Table.get(i).getPoint();
                 }
-                misti = true;
                 tempnumber*=5;
 
             }
@@ -67,14 +66,6 @@ public  class User implements Player {
 
                 }
             }
-
-
-            if(misti){
-                Templist.remove(Templist.size()-1);
-                Templist.remove(Templist.size()-2);
-            }
-
-
             point_sum(Templist);
             Table.clear();
         }
