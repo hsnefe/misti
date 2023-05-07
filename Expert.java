@@ -32,7 +32,6 @@ public class Expert extends User  {
         int tempsize=Table.size();
 
         for (int i = 0; i < super.getPhand().size(); i++) {
-            Table_tracker(Table,ExperTemplist);
             if (Table.size() > 0) {
                 if(Table.size()!= 0&& super.getPhand()!=null){
                     if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
@@ -93,16 +92,13 @@ public class Expert extends User  {
                 }
             }
         }
-
-
         if(Table.size() == tempsize&& super.getPhand()!=null){
             if(super.getPhand().size()>0){ 
                 if(super.getPhand().get(index) != null){
                     if(super.getPhand().get(index).getRank()!=("10")){
-                        if(super.getPhand().get(index).getRank()!=Table.get(Table.size()-1).getRank()){
-                Table.add(super.getPhand().get(index));
-                super.getPhand().remove(index);}
-            }
+                        Table.add(super.getPhand().get(index));
+                        super.getPhand().remove(index);
+                    }
                }
             }
         }
