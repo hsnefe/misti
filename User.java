@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public  class User implements Player {
-    private static boolean misti;
+    private static int temp_point;
     private static int tempnumber;
     private ArrayList<Card>User_Collected_card = new ArrayList<Card>();
     private ArrayList<Card> PHand = new ArrayList<Card>();
@@ -32,7 +32,12 @@ public  class User implements Player {
 
     public  void jchecker(ArrayList<Card>Cardlist){
         if(Cardlist.get(Cardlist.size()-1).getRank().equals("10")){
-        Cardlist.clear();
+             if (Cardlist.size() > 1 && Cardlist.size() != 2) {
+                Cardlist.clear();
+            } else if (Cardlist.size() == 2) {
+                if (Cardlist.get(0).getRank().equals("10")) {
+                } else Cardlist.clear();
+            }
         }
     }
 
@@ -54,6 +59,8 @@ public  class User implements Player {
                     tempnumber+=Table.get(i).getPoint();
                 }
                 tempnumber*=5;
+                Ppoint+=tempnumber;
+                tempnumber=0;
 
             }
 

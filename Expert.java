@@ -35,6 +35,7 @@ public class Expert extends User  {
             if (Table.size() > 0) {
                 if(Table.size()!= 0&& super.getPhand()!=null){
                     if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
+                        if (Table.size() == tempsize) {
                         if (Table.size() == 1) {
                         System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                         misti=true;
@@ -55,8 +56,9 @@ public class Expert extends User  {
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
                         Table.clear();
+                        break;
                     }
-                
+                    }
                 }
             }
             else{
@@ -80,7 +82,7 @@ public class Expert extends User  {
         }
         if(Table.size()==tempsize){
             for(int i=0;i<super.getPhand().size();i++){
-                if(super.getPhand().get(i).getRank().equals("10")){
+                if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0){
                     if(Table.size()!=0 && super.getPhand().get(i).getRank().equals("10")){
                     Table.add(super.getPhand().get(i));
                     super.getPhand().remove(i);

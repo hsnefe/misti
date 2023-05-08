@@ -22,6 +22,8 @@ public class Regular extends User {
                             System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
                             tempnumber+=Table.get(0).getPoint()+super.getPhand().get(i).getPoint();
                             tempnumber*=5;
+                            Regularpoint+=tempnumber;
+                            tempnumber=0;
                             point_sum(Templist);
                             Regular_Collected_card.add(Table.get(0));
                         }
@@ -30,7 +32,7 @@ public class Regular extends User {
                         Table.clear();
                         return;
                     }    
-                    else if(super.getPhand().get(i).getRank().equals("10")){
+                    else if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0){
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
                         for(int j=0;j<Table.size();j++){
