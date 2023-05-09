@@ -149,7 +149,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     if(Deck.size() == 0) break;
                 }
             }
-            if(player_size==3){
+            else if(player_size==3){
                 if(difficulty1==1){
                     P3 = new NovicePlayer();
                     if(difficulty2==1) P4 = new NovicePlayer();
@@ -220,14 +220,12 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         if(Deck.size() == 0) break;
                     }
                 }
-                if(difficulty1==3){
+                else if(difficulty1==3){
                     P3 = new Expert();
                     if(difficulty2==1) P4 = new NovicePlayer();
                     else if(difficulty2==2) P4 = new Regular();
-                    else if(difficulty2 ==3) {
-                        P4 = new Expert();
-                        Expert.expertstart();
-                    }
+                    else if(difficulty2 ==3) P4 = new Expert();
+                    Expert.expertstart();
                     P2 = null;
                     while(true){
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
@@ -255,6 +253,180 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         if(Deck.size() == 0) break;
                     }
                 }
+            } else if(player_size==4){
+                if(difficulty1==1){
+                    P3 = new NovicePlayer();
+                    if(difficulty2==1){
+                        P4 = new NovicePlayer();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) {
+                            P2 = new Expert();
+                            Expert.expertstart();
+                        }
+                    }
+                    if(difficulty2==2){
+                        P4 = new Regular();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) {
+                            P2 = new Expert();
+                            Expert.expertstart();
+                        }
+                    }
+                    if(difficulty2==3){
+                        P4 = new Expert();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) {
+                            P2 = new Expert();
+                            Expert.expertstart();
+                        }
+                    }
+                    while(true){
+                        Card.dealer(Table, user,P3 , P4, P2, Deck);
+                        for(int i = 0;i<4;i++){
+                            System.out.println("*******");
+                            printOutTable();
+                            System.out.println("*******");
+                            choose_card(user, Table);
+                            System.out.println("*******");
+                            printOutTable();
+                            System.out.println("********");
+                            choose_card(P3, Table);
+                            System.out.println("*********");
+                            System.out.println("AI1 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                            choose_card(P4, Table);
+                            System.out.println("*********");
+                            System.out.println("AI2 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                            choose_card(P2, Table);
+                            System.out.println("*********");
+                            System.out.println("AI3 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                        }
+                        if(Deck.size() == 0) break;
+                    }
+                }
+                else if(difficulty1==2){
+                    P3 = new Regular();
+                    if(difficulty2==1){
+                        P4 = new NovicePlayer();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) {
+                            P2 = new Expert();
+                            Expert.expertstart();
+                        }
+                    }
+                    else if(difficulty2==2){
+                        P4 = new Regular();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) {
+                            P2 = new Expert();
+                            Expert.expertstart();
+                        }
+                    }
+                    else if(difficulty2==3){
+                        P4 = new Expert();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) P2 = new Expert();
+                        Expert.expertstart();
+                    }
+                    while(true){
+                        Card.dealer(Table, user,P3 , P4, P2, Deck);
+                        for(int i = 0;i<4;i++){
+                            System.out.println("*******");
+                            printOutTable();
+                            System.out.println("*******");
+                            choose_card(user, Table);
+                            System.out.println("*******");
+                            printOutTable();
+                            System.out.println("********");
+                            choose_card(P3, Table);
+                            System.out.println("*********");
+                            System.out.println("AI1 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                            choose_card(P4, Table);
+                            System.out.println("*********");
+                            System.out.println("AI2 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                            choose_card(P2, Table);
+                            System.out.println("*********");
+                            System.out.println("AI3 played");
+                            System.out.println("*********");
+                            printOutTable();
+                            System.out.println("*********");
+                        }
+                        if(Deck.size() == 0) break;
+                    }
+                }
+                else if(difficulty1==3){
+                    P3 = new Expert();
+                    if(difficulty2==1){
+                        P4 = new NovicePlayer();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) P2 = new Expert();
+                    }
+                    else if(difficulty2==2){
+                        P4 = new Regular();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) P2 = new Expert();
+                    }
+                    else if(difficulty2==3){
+                        P4 = new Expert();
+                        if(difficulty3==1) P2= new NovicePlayer();
+                        else if(difficulty3==2) P2 = new Regular();
+                        else if(difficulty3==3) P2 = new Expert();
+                    }
+                    Expert.expertstart();
+                while(true){
+                    Card.dealer(Table, user,P3 , P4, P2, Deck);
+                    for(int i = 0;i<4;i++){
+                        System.out.println("*******");
+                        printOutTable();
+                        System.out.println("*******");
+                        choose_card(user, Table);
+                        System.out.println("*******");
+                        printOutTable();
+                        System.out.println("********");
+                        choose_card(P3, Table);
+                        System.out.println("*********");
+                        System.out.println("AI1 played");
+                        System.out.println("*********");
+                        printOutTable();
+                        System.out.println("*********");
+                        choose_card(P4, Table);
+                        System.out.println("*********");
+                        System.out.println("AI2 played");
+                        System.out.println("*********");
+                        printOutTable();
+                        System.out.println("*********");
+                        choose_card(P2, Table);
+                        System.out.println("*********");
+                        System.out.println("AI3 played");
+                        System.out.println("*********");
+                        printOutTable();
+                        System.out.println("*********");
+                    }
+                    if(Deck.size() == 0) break;
+                }
             }
+        }            
     }
 }

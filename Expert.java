@@ -65,9 +65,11 @@ public class Expert extends User  {
                 for (int b=0;b<super.getPhand().size();b++){
                     for(int j= 0;j<13;j++){
                         if (card_counter.get(j)==3){
-                            Table.add(super.getPhand().get(b));
-                            super.getPhand().remove(b);
-                            break;
+                            if(j==Integer.parseInt(super.getPhand().get(b).getRank())){
+                                Table.add(super.getPhand().get(b));
+                                super.getPhand().remove(b);
+                                break;
+                            }
                         }
                         if(Table.size()!=tempsize) break;
                     }
