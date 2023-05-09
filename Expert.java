@@ -55,6 +55,7 @@ public class Expert extends User  {
                         }
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
+                        super.getUser_Collected_card().addAll(Table);
                         Table.clear();
                         break;
                     }
@@ -91,6 +92,7 @@ public class Expert extends User  {
                     Expert_Collected_card.addAll(Table);
                     ExperTemplist.addAll(Expert_Collected_card);
                     point_sum(Expert_Collected_card);
+                    super.getUser_Collected_card().addAll(Table);
                     Table.clear();
                     System.out.println("masa temizlendi");}
                 }

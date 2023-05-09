@@ -4,14 +4,6 @@ import java.util.ArrayList;
 public class NovicePlayer extends User {
     private static int tempnumber;
     private ArrayList<Card>Novice_Collected_card = new ArrayList<Card>();
-    
-    public ArrayList<Card> getNovice_Collected_card() {
-        return Novice_Collected_card;
-    }
-    public void setNovice_Collected_card(ArrayList<Card> novice_Collected_card) {
-        Novice_Collected_card = novice_Collected_card;
-    }
-
     private static int Novicepoint;
     private static int novice_collection_count = 0;
 
@@ -51,6 +43,7 @@ public class NovicePlayer extends User {
                 for(int j=0;j<Table.size();j++){
                     Novice_Collected_card.add(Table.get(j));
                 }
+                super.getUser_Collected_card().addAll(Table);
                 Table.clear();
             }
             } 
@@ -82,6 +75,7 @@ public class NovicePlayer extends User {
                 }
             }
             point_sum(Templist);
+            super.getUser_Collected_card().addAll(Table);
             Table.clear();
             
         }

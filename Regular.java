@@ -29,6 +29,7 @@ public class Regular extends User {
                         }
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
+                        super.getUser_Collected_card().addAll(Table);
                         Table.clear();
                         return;
                     }    
@@ -38,6 +39,7 @@ public class Regular extends User {
                         for(int j=0;j<Table.size();j++){
                             Regular_Collected_card.add(Table.get(j));
                         }
+                        super.getUser_Collected_card().addAll(Table);
                         Table.clear();
                     }
                 }

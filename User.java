@@ -2,9 +2,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public  class User implements Player {
-    private static int temp_point;
     private static int tempnumber;
     private ArrayList<Card>User_Collected_card = new ArrayList<Card>();
+    public ArrayList<Card> getUser_Collected_card() {
+        return User_Collected_card;
+    }
+
+
+    public void setUser_Collected_card(ArrayList<Card> user_Collected_card) {
+        User_Collected_card = user_Collected_card;
+    }
+
+
     private ArrayList<Card> PHand = new ArrayList<Card>();
     private static int Ppoint;
 
@@ -74,6 +83,7 @@ public  class User implements Player {
                 }
             }
             point_sum(Templist);
+            getUser_Collected_card().addAll(Table);
             Table.clear();
         }
         }

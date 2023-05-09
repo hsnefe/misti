@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import org.w3c.dom.ls.LSException;
 public class Gameflow{
 
 static Random r = new Random(System.currentTimeMillis());
 
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
-
+private static User last_taker;
 public Gameflow(ArrayList<Card> table, User uter, User regular, User expert, User novicePlayer,ArrayList<Card>deck) {
     Deck=deck;
     Table = table;
@@ -136,17 +138,22 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         printOutTable();
                         System.out.println("*******");
                         choose_card(user, Table);
+                        if(Table.size()==0) last_taker =user;
                         System.out.println("*******");
                         printOutTable();
                         System.out.println("********");
                         choose_card(P3, Table);
+                        if(Table.size()==0) last_taker = P3;
                         System.out.println("*********");
                         System.out.println("AI played");
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
                     }
-                    if(Deck.size() == 0) break;
+                    if(Deck.size() == 0) {
+                        last_taker.getUser_Collected_card().addAll(Table);
+                        break;
+                    }
                 }
             }
             else if(player_size==3){
@@ -166,23 +173,29 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             printOutTable();
                             System.out.println("*******");
                             choose_card(user, Table);
+                            if(Table.size()==0) last_taker =user;
                             System.out.println("*******");
                             printOutTable();
                             System.out.println("********");
                             choose_card(P3, Table);
+                            if(Table.size()==0) last_taker =P3;
                             System.out.println("*********");
                             System.out.println("AI1 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P4, Table);
+                            if(Table.size()==0) last_taker =P4;
                             System.out.println("*********");
                             System.out.println("AI2 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                         }
-                        if(Deck.size() == 0) break;
+                        if(Deck.size() == 0) {
+                            last_taker.getUser_Collected_card().addAll(Table);
+                            break;
+                        }
                     }
                 }
                 else if(difficulty1==2){
@@ -201,23 +214,29 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             printOutTable();
                             System.out.println("*******");
                             choose_card(user, Table);
+                            if(Table.size()==0) last_taker =user;
                             System.out.println("*******");
                             printOutTable();
                             System.out.println("********");
                             choose_card(P3, Table);
+                            if(Table.size()==0) last_taker =P3;
                             System.out.println("*********");
                             System.out.println("AI1 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P4, Table);
+                            if(Table.size()==0) last_taker =P4;
                             System.out.println("*********");
                             System.out.println("AI2 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                         }
-                        if(Deck.size() == 0) break;
+                        if(Deck.size() == 0) {
+                            last_taker.getUser_Collected_card().addAll(Table);
+                            break;
+                        }
                     }
                 }
                 else if(difficulty1==3){
@@ -234,23 +253,29 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             printOutTable();
                             System.out.println("*******");
                             choose_card(user, Table);
+                            if(Table.size()==0) last_taker =user;
                             System.out.println("*******");
                             printOutTable();
                             System.out.println("********");
                             choose_card(P3, Table);
+                            if(Table.size()==0) last_taker = P3;
                             System.out.println("*********");
                             System.out.println("AI1 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P4, Table);
+                            if(Table.size()==0) last_taker =P4;
                             System.out.println("*********");
                             System.out.println("AI2 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                         }
-                        if(Deck.size() == 0) break;
+                        if(Deck.size() == 0) {
+                            last_taker.getUser_Collected_card().addAll(Table);
+                            break;
+                        }
                     }
                 }
             } else if(player_size==4){
@@ -290,29 +315,36 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             printOutTable();
                             System.out.println("*******");
                             choose_card(user, Table);
+                            if(Table.size()==0) last_taker =user;
                             System.out.println("*******");
                             printOutTable();
                             System.out.println("********");
                             choose_card(P3, Table);
+                            if(Table.size()==0) last_taker =P3;
                             System.out.println("*********");
                             System.out.println("AI1 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P4, Table);
+                            if(Table.size()==0) last_taker =P4;
                             System.out.println("*********");
                             System.out.println("AI2 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P2, Table);
+                            if(Table.size()==0) last_taker =P2;
                             System.out.println("*********");
                             System.out.println("AI3 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                         }
-                        if(Deck.size() == 0) break;
+                        if(Deck.size() == 0) {
+                            last_taker.getUser_Collected_card().addAll(Table);
+                            break;
+                        }
                     }
                 }
                 else if(difficulty1==2){
@@ -349,29 +381,36 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             printOutTable();
                             System.out.println("*******");
                             choose_card(user, Table);
+                            if(Table.size()==0) last_taker =user;
                             System.out.println("*******");
                             printOutTable();
                             System.out.println("********");
                             choose_card(P3, Table);
+                            if(Table.size()==0) last_taker =P3;
                             System.out.println("*********");
                             System.out.println("AI1 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P4, Table);
+                            if(Table.size()==0) last_taker = P4;
                             System.out.println("*********");
                             System.out.println("AI2 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                             choose_card(P2, Table);
+                            if(Table.size() == 0) last_taker =P2;
                             System.out.println("*********");
                             System.out.println("AI3 played");
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
                         }
-                        if(Deck.size() == 0) break;
+                        if(Deck.size() == 0){
+                            last_taker.getUser_Collected_card().addAll(Table);
+                            break;
+                        }
                     }
                 }
                 else if(difficulty1==3){
@@ -402,29 +441,36 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         printOutTable();
                         System.out.println("*******");
                         choose_card(user, Table);
+                        if(Table.size()==0) last_taker =user;
                         System.out.println("*******");
                         printOutTable();
                         System.out.println("********");
                         choose_card(P3, Table);
+                        if(Table.size()==0) last_taker =P3;
                         System.out.println("*********");
                         System.out.println("AI1 played");
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
                         choose_card(P4, Table);
+                        if(Table.size()==0) last_taker =P4;
                         System.out.println("*********");
                         System.out.println("AI2 played");
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
                         choose_card(P2, Table);
+                        if(Table.size()==0) last_taker =P2;
                         System.out.println("*********");
                         System.out.println("AI3 played");
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
                     }
-                    if(Deck.size() == 0) break;
+                    if(Deck.size() == 0) {
+                        last_taker.getUser_Collected_card().addAll(Table);
+                        break;
+                    }
                 }
             }
         }            
