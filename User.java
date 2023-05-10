@@ -1,7 +1,27 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public  class User implements Player {
+public  class User implements Player, Serializable {
+    public User() {
+    }
+    public User(String name, int ppoint) {
+        this.name = name;
+        Ppoint = ppoint;
+    }
+
+
+    private String name;
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     private int tempnumber;
     private int temp_point;
     private ArrayList<Card>User_Collected_card = new ArrayList<Card>();

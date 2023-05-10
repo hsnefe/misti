@@ -1,8 +1,12 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
-import org.w3c.dom.ls.LSException;
 public class Gameflow{
 
 static Random r = new Random(System.currentTimeMillis());
@@ -112,6 +116,62 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             break;
         }
         game(player_size,difficulty1,difficulty2,difficulty3);
+    }
+    public static ArrayList<User> sethiscores(){
+        while(true){
+            try{
+                FileInputStream fileIn = new FileInputStream("hiscore.ser");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                ArrayList<User> hiscores = (ArrayList<User>) in.readObject();
+                in.close();
+                fileIn.close();
+                return hiscores;
+            }catch(Exception e){
+                try{
+                    ArrayList<User> bUsers = new ArrayList<User>();
+                    bUsers.add(new User("Hasan",65));
+                    bUsers.add(new User("Bartu",70));
+                    bUsers.add(new User("Efe",85));
+                    bUsers.add(new User("Can",60));
+                    bUsers.add(new User("Erkan",67));
+                    bUsers.add(new User("Bora",72));
+                    bUsers.add(new User("Kerem",68));
+                    bUsers.add(new User("Beren",73));
+                    bUsers.add(new User("Yaren",78));
+                    bUsers.add(new User("Zeynep",71));
+                    FileOutputStream fileOut = new FileOutputStream("hiscore.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(bUsers);
+                    out.close();
+                    fileOut.close();
+                    continue;
+                }catch(FileNotFoundException e1){
+                    System.err.println("There is no file for hiscore.ser");
+                }catch(IOException er){
+                    System.err.println("Something wrong with the  oos");
+                }
+            }
+        }
+    }
+    public static ArrayList<User> wrap_player(ArrayList<User> theList, User upcoming, int hierarchy){
+        if(hierarchy<=1) return theList;
+        if(theList.get(hierarchy-1).getPpoint()>=upcoming.getPpoint()) return theList;
+        else{
+                try{
+                    theList.remove(hierarchy-1);
+                    theList.add(upcoming);
+                    FileOutputStream fileOut2 = new FileOutputStream("hiscore.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut2);
+                    out.writeObject(theList);
+                    out.close();
+                    fileOut2.close();
+                }catch(FileNotFoundException e1){
+                    System.err.println("There is no file for hiscore.ser");
+                }catch(IOException er){
+                    System.err.println("Something wrong with the  oos");
+                }
+        }
+        return wrap_player(theList, upcoming, hierarchy-1);
     }
     public static void end_game(User user,User P3, User P4, User P2){
         user.point_sum(user.getUser_Collected_card());
@@ -484,6 +544,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                 }
             }
         }
-        end_game(user, P3, P4, P2);            
+        end_game(user, P3, P4, P2);
+        wrap_player(sethiscores(), user, 10);           
     }
 }
