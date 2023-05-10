@@ -10,8 +10,6 @@ public class Expert extends User  {
     public static int getExpertpoint() {
         return Expertpoint;
     }
-
-    private ArrayList<Card> Templist = new ArrayList<Card>();
     private ArrayList<Card> ExperTemplist = new ArrayList<Card>();// card trackerlist;
 
     public static  void expertstart(){
@@ -46,12 +44,8 @@ public class Expert extends User  {
                         }
                         else {
                             misti=false;
-                            Templist.addAll(Table);
-                            Templist.add(super.getPhand().get(i));
                             Expert_Collected_card.addAll(Table);
-                            Expert_Collected_card.add(super.getPhand().get(i));
-                            point_sum(Templist);
-                            
+                            Expert_Collected_card.add(super.getPhand().get(i));                            
                         }
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
@@ -122,9 +116,10 @@ public class Expert extends User  {
         for (int i = 0; i < SummedCards.size(); i++) {
 
             temp_point += SummedCards.get(i).getPoint();
-            Expertpoint += temp_point;
+            super.setPpoint(temp_point+super.getPpoint());
         }
-        Expertpoint += tempnumber;
+
+       super.setPpoint(tempnumber+super.getPpoint());
     }
     
     public static void Table_tracker(ArrayList<Card>Table,ArrayList<Card>ExperTemplist){

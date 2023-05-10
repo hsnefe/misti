@@ -5,16 +5,10 @@ public class NovicePlayer extends User {
     private static int tempnumber;
     private ArrayList<Card>Novice_Collected_card = new ArrayList<Card>();
     private static int Novicepoint;
-    private static int novice_collection_count = 0;
 
     public static int getNovicepoint() {
         return Novicepoint;
     }
-
-    private  ArrayList<Card>Templist = new ArrayList<Card>();
-
-
-
     @Override
     public void jchecker(ArrayList<Card> Cardlist) {
         if (Cardlist.size() == 2) {
@@ -61,20 +55,7 @@ public class NovicePlayer extends User {
                 tempnumber*=5;
                 Novicepoint+=tempnumber;
                 tempnumber=0;
-                if (novice_collection_count > 0) {
-                Templist.remove(Templist.size()-1);
-                Templist.remove(Templist.size()-2);
-                }
             }
-
-            else {
-                for(int i=0;i<Table.size();i++){
-                    Templist.add(Table.get(i));
-                    Novice_Collected_card.add(Table.get(i));
-                    novice_collection_count++;
-                }
-            }
-            point_sum(Templist);
             super.getUser_Collected_card().addAll(Table);
             Table.clear();
             
@@ -88,15 +69,15 @@ public class NovicePlayer extends User {
     }
 
     @Override
-    public void point_sum(ArrayList<Card> SummedCards) {
+    public void point_sum(ArrayList<Card> SummedCards){
         int temp_point = 0;
 
         for (int i = 0; i < SummedCards.size(); i++) {
 
             temp_point += SummedCards.get(i).getPoint();
-            Novicepoint += temp_point;
+            super.setPpoint(temp_point+super.getPpoint());
         }
 
-        Novicepoint += tempnumber;
+       super.setPpoint(tempnumber+super.getPpoint());
     }
 }

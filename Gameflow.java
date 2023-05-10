@@ -113,6 +113,16 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         }
         game(player_size,difficulty1,difficulty2,difficulty3);
     }
+    public static void end_game(User user,User P3, User P4, User P2){
+        user.point_sum(user.getUser_Collected_card());
+        P3.point_sum(P3.getUser_Collected_card());
+        if(P4!= null)P4.point_sum(P4.getUser_Collected_card());
+        if(P2!=null)P2.point_sum(P2.getUser_Collected_card());
+        System.out.println("Your Point:"+user.getPpoint());
+        System.out.println("AI1's Point:"+P3.getPpoint());
+        if(P4!=null)System.out.println("AI2's Point:"+P4.getPpoint());
+        if(P2!=null)System.out.println("AI3's Point:"+P2.getPpoint());
+    }
     public static void game (int player_size,int difficulty1,int difficulty2,int difficulty3){
             if(player_size==2){
                 if(difficulty1==3){
@@ -473,6 +483,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     }
                 }
             }
-        }            
+        }
+        end_game(user, P3, P4, P2);            
     }
 }

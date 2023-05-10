@@ -7,7 +7,6 @@ public class Regular extends User {
     public static int getRegularpoint() {
         return Regularpoint;
     }
-    private  ArrayList<Card>Templist = new ArrayList<Card>();
     @Override
     public void play_card( ArrayList<Card> Table, int index){
         int temp_size = Table.size();
@@ -24,7 +23,6 @@ public class Regular extends User {
                             tempnumber*=5;
                             Regularpoint+=tempnumber;
                             tempnumber=0;
-                            point_sum(Templist);
                             Regular_Collected_card.add(Table.get(0));
                         }
                         Table.add(super.getPhand().get(i));
@@ -61,10 +59,13 @@ public class Regular extends User {
     @Override
     public void point_sum(ArrayList<Card> SummedCards) {
         int temp_point = 0;
+
         for (int i = 0; i < SummedCards.size(); i++) {
+
             temp_point += SummedCards.get(i).getPoint();
-            Regularpoint += temp_point;
+            super.setPpoint(temp_point+super.getPpoint());
         }
-        Regularpoint += tempnumber;
+
+       super.setPpoint(tempnumber+super.getPpoint());
     }
 }

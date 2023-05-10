@@ -15,7 +15,7 @@ public  class User implements Player {
 
 
     private ArrayList<Card> PHand = new ArrayList<Card>();
-    private static int Ppoint;
+    private  int Ppoint;
 
     public ArrayList<Card> getPhand() {
         return PHand;
@@ -27,12 +27,12 @@ public  class User implements Player {
     }
 
 
-    public static int getPpoint() {
+    public  int getPpoint() {
         return Ppoint;
     }
 
 
-    public static void setPpoint(int ppoint) {
+    public  void setPpoint(int ppoint) {
         Ppoint = ppoint;
     }
 
