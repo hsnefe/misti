@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public  class User implements Player {
-    private static int tempnumber;
+    private int tempnumber;
+    private int temp_point;
     private ArrayList<Card>User_Collected_card = new ArrayList<Card>();
+    
     public ArrayList<Card> getUser_Collected_card() {
         return User_Collected_card;
     }
@@ -37,15 +39,17 @@ public  class User implements Player {
     }
 
 
-    public ArrayList<Card> Templist = new ArrayList<Card>();
-
     public  void jchecker(ArrayList<Card>Cardlist){
         if(Cardlist.get(Cardlist.size()-1).getRank().equals("10")){
              if (Cardlist.size() > 1 && Cardlist.size() != 2) {
+                User_Collected_card.addAll(Cardlist);
                 Cardlist.clear();
             } else if (Cardlist.size() == 2) {
                 if (Cardlist.get(0).getRank().equals("10")) {
-                } else Cardlist.clear();
+                } else {
+                User_Collected_card.addAll(Cardlist);
+                Cardlist.clear();
+                }
             }
         }
     }
@@ -75,15 +79,9 @@ public  class User implements Player {
 
 
             else {
-                for(int i=0;i<Table.size();i++){
-
-                Templist.add(Table.get(i));
-                User_Collected_card.add(Table.get(i));
-
-                }
+                User_Collected_card.addAll(Table);
             }
-            point_sum(Templist);
-            getUser_Collected_card().addAll(Table);
+
             Table.clear();
         }
         }
@@ -92,15 +90,13 @@ public  class User implements Player {
 
     public void point_sum(ArrayList <Card> SummedCards) {
 
-        int temp_point=0;
-
         for (int i =0;i<SummedCards.size();i++){
 
             temp_point+=SummedCards.get(i).getPoint();
-            Ppoint+=temp_point;
 
         }
-        Ppoint+=tempnumber;
+        Ppoint+=temp_point+tempnumber;
+        temp_point = 0;
 
     }
 
