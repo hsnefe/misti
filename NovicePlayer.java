@@ -12,8 +12,8 @@ public class NovicePlayer extends User {
     }
     
     
-    public void play_card( ArrayList<Card> Table, int index) {
-         System.out.println("**********");
+    public void play_card( ArrayList<Card> Table, int index) {  
+        System.out.println("**********");
         System.out.println("ai eli:");
         super.printAiHand(super.getPhand());
         

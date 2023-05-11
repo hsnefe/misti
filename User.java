@@ -85,8 +85,21 @@ public  class User implements Player, Serializable {
                     if(P3.getPhand().size()>i+1){System.out.print(",");}
                 }
             }
+            if(player_size==4){
+                for(int a =0;a<P2.getPhand().size();a++){
+                    System.out.printf("%s%s",P2.getPhand().get(a).getSuit() , P2.getPhand().get(a).getRank());
+                    if(P2.getPhand().size()>a+1){System.out.print(",");}
+                 }
+                 for(int i=0 ; i<P3.getPhand().size() ;i++){
+                     System.out.printf("%s%s",P3.getPhand().get(i).getSuit(),P3.getPhand().get(i).getRank());
+                     if(P3.getPhand().size()>i+1){System.out.print(",");}
+                 }
+                 for(int a =0;a<P4.getPhand().size();a++){
+                    System.out.printf("%s%s",P4.getPhand().get(a).getSuit() , P4.getPhand().get(a).getRank());
+                    if(P4.getPhand().size()>a+1){System.out.print(",");}
+                 }
+            }
         }
-
     }
 
 
