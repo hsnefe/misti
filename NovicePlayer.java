@@ -2,27 +2,16 @@ import java.util.Objects;
 import java.util.ArrayList;
 
 public class NovicePlayer extends User {
-    private static int tempnumber;
+    private int tempnumber;
     private ArrayList<Card>Novice_Collected_card = new ArrayList<Card>();
-    private static int Novicepoint;
+    private int Novicepoint;
+    private int temp_point;
 
-    public static int getNovicepoint() {
+    public int getNovicepoint() {
         return Novicepoint;
     }
-    @Override
-    public void jchecker(ArrayList<Card> Cardlist) {
-        if (Cardlist.size() == 2) {
-            if (Cardlist.get(0).getRank().equals("10")) {
-                System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
-            for (int i=0;i<2;i++){
-                tempnumber+=Cardlist.get(i).getPoint();
-            }
-            tempnumber*=5;
-            Novicepoint+=tempnumber;
-            tempnumber=0;
-            }
-        }
-    }
+    
+    
     public void play_card( ArrayList<Card> Table, int index) {
         System.out.println("**********");
         System.out.println("ai eli:");
@@ -31,7 +20,7 @@ public class NovicePlayer extends User {
         if(super.getPhand().get(index) != null) {
             if (super.getPhand().get(index).getRank().equals("10")) {
                 Table.add(super.getPhand().get(index));
-                jchecker(Table);
+                super.jchecker(Table);
                 //super.getPhand().remove(index);
                 if (Table.size() > 1) {
                 for(int j=0;j<Table.size();j++){
@@ -55,6 +44,7 @@ public class NovicePlayer extends User {
                 tempnumber*=5;
                 Novicepoint+=tempnumber;
                 tempnumber=0;
+                Table.clear();
             }
             super.getUser_Collected_card().addAll(Table);
             Table.clear();
@@ -70,14 +60,13 @@ public class NovicePlayer extends User {
 
     @Override
     public void point_sum(ArrayList<Card> SummedCards){
-        int temp_point = 0;
 
         for (int i = 0; i < SummedCards.size(); i++) {
 
             temp_point += SummedCards.get(i).getPoint();
-            super.setPpoint(temp_point+super.getPpoint());
         }
-
-       super.setPpoint(tempnumber+super.getPpoint());
+        super.setPpoint(temp_point+super.getPpoint());
+        super.setPpoint(Novicepoint+super.getPpoint());
+        temp_point=0;
     }
 }
