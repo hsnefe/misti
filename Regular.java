@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.Objects;
 public class Regular extends User {
-    private static int tempnumber;
+    private int tempnumber;
+    private int temp_point;
     private ArrayList<Card>Regular_Collected_card = new ArrayList<Card>();
-    private static int Regularpoint;
-    public static int getRegularpoint() {
+    private int Regularpoint;
+    public int getRegularpoint() {
         return Regularpoint;
     }
     @Override
@@ -24,6 +25,8 @@ public class Regular extends User {
                             Regularpoint+=tempnumber;
                             tempnumber=0;
                             Regular_Collected_card.add(Table.get(0));
+                            Table.get(0).setPoint(0);
+                            super.getPhand().get(i).setPoint(0);
                         }
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
@@ -58,14 +61,13 @@ public class Regular extends User {
 
     @Override
     public void point_sum(ArrayList<Card> SummedCards) {
-        int temp_point = 0;
 
         for (int i = 0; i < SummedCards.size(); i++) {
 
             temp_point += SummedCards.get(i).getPoint();
-            super.setPpoint(temp_point+super.getPpoint());
         }
-
-       super.setPpoint(tempnumber+super.getPpoint());
+        super.setPpoint(temp_point+super.getPpoint());
+        super.setPpoint(Regularpoint+super.getPpoint());
+        temp_point=0;
     }
 }
