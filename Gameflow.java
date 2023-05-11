@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Gameflow{
 
 static Random r = new Random(System.currentTimeMillis());
+private static ArrayList<User> hiscores = new ArrayList<User>();
 
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
@@ -117,52 +118,52 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         }
         game(player_size,difficulty1,difficulty2,difficulty3);
     }
-    public static ArrayList<User> sethiscores(){
-        while(true){
-            try{
-                FileInputStream fileIn = new FileInputStream("hiscore.ser");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                ArrayList<User> hiscores = (ArrayList<User>) in.readObject();
-                in.close();
-                fileIn.close();
-                return hiscores;
-            }catch(Exception e){
+    public static ArrayList<User> sethiscores(User upcoming, int hierarchy,boolean create){
+        if(create){
+            while(true){
                 try{
-                    ArrayList<User> bUsers = new ArrayList<User>();
-                    bUsers.add(new User("Hasan",65));
-                    bUsers.add(new User("Bartu",70));
-                    bUsers.add(new User("Efe",85));
-                    bUsers.add(new User("Can",60));
-                    bUsers.add(new User("Erkan",67));
-                    bUsers.add(new User("Bora",72));
-                    bUsers.add(new User("Kerem",68));
-                    bUsers.add(new User("Beren",73));
-                    bUsers.add(new User("Yaren",78));
-                    bUsers.add(new User("Zeynep",71));
-                    FileOutputStream fileOut = new FileOutputStream("hiscore.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                    out.writeObject(bUsers);
-                    out.close();
-                    fileOut.close();
-                    continue;
-                }catch(FileNotFoundException e1){
-                    System.err.println("There is no file for hiscore.ser");
-                }catch(IOException er){
-                    System.err.println("Something wrong with the  oos");
+                    FileInputStream fileIn = new FileInputStream("hiscore.ser");
+                    ObjectInputStream in = new ObjectInputStream(fileIn);
+                    hiscores = (ArrayList<User>) in.readObject();
+                    in.close();
+                    fileIn.close();
+                    break;
+                }catch(Exception e){
+                    try{
+                        ArrayList<User> bUsers = new ArrayList<User>();
+                        bUsers.add(new User("Hasan",65));
+                        bUsers.add(new User("Bartu",70));
+                        bUsers.add(new User("Efe",85));
+                        bUsers.add(new User("Can",60));
+                        bUsers.add(new User("Erkan",67));
+                        bUsers.add(new User("Bora",72));
+                        bUsers.add(new User("Kerem",68));
+                        bUsers.add(new User("Beren",73));
+                        bUsers.add(new User("Yaren",78));
+                        bUsers.add(new User("Zeynep",71));
+                        FileOutputStream fileOut = new FileOutputStream("hiscore.ser");
+                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                        out.writeObject(bUsers);
+                        out.close();
+                        fileOut.close();
+                        continue;
+                    }catch(FileNotFoundException e1){
+                        System.err.println("There is no file for hiscore.ser");
+                    }catch(IOException er){
+                        System.err.println("Something wrong with the  oos");
+                    }
                 }
             }
         }
-    }
-    public static ArrayList<User> wrap_player(ArrayList<User> theList, User upcoming, int hierarchy){
-        if(hierarchy<=1) return theList;
-        if(theList.get(hierarchy-1).getPpoint()>=upcoming.getPpoint()) return theList;
+        if(hierarchy<=1) return hiscores;
+        if(hiscores.get(hierarchy-1).getPpoint()>=upcoming.getPpoint()) return hiscores;
         else{
                 try{
-                    theList.remove(hierarchy-1);
-                    theList.add(upcoming);
+                    hiscores.remove(hierarchy-1);
+                    hiscores.add(upcoming);
                     FileOutputStream fileOut2 = new FileOutputStream("hiscore.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut2);
-                    out.writeObject(theList);
+                    out.writeObject(hiscores);
                     out.close();
                     fileOut2.close();
                 }catch(FileNotFoundException e1){
@@ -171,7 +172,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     System.err.println("Something wrong with the  oos");
                 }
         }
-        return wrap_player(theList, upcoming, hierarchy-1);
+        return sethiscores( upcoming, hierarchy-1,false);
     }
     public static void end_game(User user,User P3, User P4, User P2){
         user.point_sum(user.getUser_Collected_card());
@@ -545,6 +546,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             }
         }
         end_game(user, P3, P4, P2);
-        wrap_player(sethiscores(), user, 10);           
+        hiscores = sethiscores(user,10,true);
+        for(User i: hiscores){
+            System.out.println(i.getName()+i.getPpoint());
+        }
     }
 }
