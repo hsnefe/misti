@@ -9,8 +9,18 @@ import java.util.Random;
 import java.util.Scanner;
 public class Gameflow{
 
+   // private NovicePlayer novicePlayer = new NovicePlayer();
+    //private Regular regular = new Regular();
+    //private Expert expert = new Expert();
+
+    private static boolean verbose;
+    private static String sifre="123";
+    public  static int player_size;
+
 static Random r = new Random(System.currentTimeMillis());
 private static ArrayList<User> hiscores = new ArrayList<User>();
+
+
 
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
@@ -75,11 +85,11 @@ public User getUser() {
     return user;
 }
 
-
 public void setUser(User uter) {
     user = uter;
 }
-static Scanner sc= new Scanner (System.in);
+ static Scanner sc= new Scanner (System.in);
+ static Scanner sikanner = new Scanner(System.in);
 
 public static  void choose_card(User P1,ArrayList<Card> Table){
         int rand=0;
@@ -93,17 +103,22 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         }
         else P1.play_card(Table,rand);
 }
+
+
+
     public static void printOutTable(){
         System.out.println("Table:");
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());}
     }
+
+    
     public static void set_game(){
         int difficulty1 = 0;
         int difficulty2=0;
         int difficulty3=0;
         System.out.println("Choose number of players(2 to 4):");
-        int player_size = sc.nextInt();
+        player_size = sc.nextInt();
         switch(player_size){
             case(4):
             System.out.println("Choose a difficulty for AI");
@@ -202,7 +217,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     P2 = null;
                 }
                 Expert.expertstart();
+                User.verbosemode(P3, P2, P4,2);
                 while(true){
+                    
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
                     for(int i = 0;i<4;i++){
                         System.out.println("*******");
@@ -237,7 +254,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
+                    User.verbosemode(P3, P4, P2,3);
                     while(true){
+                        
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -278,7 +297,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
+                    User.verbosemode(P3, P4, P2,4);
                     while(true){
+                        
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");

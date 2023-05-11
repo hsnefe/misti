@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public  class User implements Player, Serializable {
     public User() {
@@ -57,6 +58,37 @@ public  class User implements Player, Serializable {
     public  void setPpoint(int ppoint) {
         Ppoint = ppoint;
     }
+    static Scanner sc= new Scanner(System.in);
+
+    private static boolean verbose;
+    private static String sifre="123";
+
+    public static  void verbosemode(User P2,User P3,User P4,int player_size){
+        System.out.println(" If you want verbose mode please enter a password:");
+        System.out.println(" Or you can press q and start playing");
+        String password = sc.nextLine();
+        if(password.equals(sifre)){
+            verbose=true;
+            if(player_size==2){
+                for(int i =0;i<P2.getPhand().size();i++){
+                    System.out.printf("%s%s",P2.getPhand().get(i).getSuit(), P2.getPhand().get(i).getRank());
+                    if(P2.getPhand().size()>i+1){System.out.print(",");}
+                }
+            }
+            if(player_size==3){
+                for(int a =0;a<P2.getPhand().size();a++){
+                   System.out.printf("%s%s",P2.getPhand().get(a).getSuit() , P2.getPhand().get(a).getRank());
+                   if(P2.getPhand().size()>a+1){System.out.print(",");}
+                }
+                for(int i=0 ; i<P3.getPhand().size() ;i++){
+                    System.out.printf("%s%s",P3.getPhand().get(i).getSuit(),P3.getPhand().get(i).getRank());
+                    if(P3.getPhand().size()>i+1){System.out.print(",");}
+                }
+            }
+        }
+
+    }
+
 
 
     public  void jchecker(ArrayList<Card>Cardlist){
@@ -121,8 +153,13 @@ public  class User implements Player, Serializable {
     }
 
     public void printAiHand(ArrayList <Card> aihand) {
+        if(verbose){
         for (int i=0;i<aihand.size();i++) {
-            System.out.println(aihand.get(i).getRank() + aihand.get(i).getSuit());
+            //System.out.println(aihand.get(i).getRank() + aihand.get(i).getSuit());
+            System.out.printf("%s%s",aihand.get(i).getSuit(),aihand.get(i).getRank());
+            if(aihand.size()>i+1){System.out.print(",");
         }
+        }
+    }
     }
 }

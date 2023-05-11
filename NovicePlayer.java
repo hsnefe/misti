@@ -13,7 +13,7 @@ public class NovicePlayer extends User {
     
     
     public void play_card( ArrayList<Card> Table, int index) {
-        System.out.println("**********");
+         System.out.println("**********");
         System.out.println("ai eli:");
         super.printAiHand(super.getPhand());
         
@@ -54,8 +54,8 @@ public class NovicePlayer extends User {
     super.getPhand().remove(index);
    
     System.out.println("**********");
-        System.out.println("ai eli:");
-        super.printAiHand(super.getPhand());
+    System.out.println("ai eli:");
+    super.printAiHand(super.getPhand());
     }
 
     @Override
