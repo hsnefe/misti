@@ -131,16 +131,16 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                 }catch(Exception e){
                     try{
                         ArrayList<User> bUsers = new ArrayList<User>();
-                        bUsers.add(new User("Hasan",65));
-                        bUsers.add(new User("Bartu",70));
-                        bUsers.add(new User("Efe",85));
-                        bUsers.add(new User("Can",60));
-                        bUsers.add(new User("Erkan",67));
-                        bUsers.add(new User("Bora",72));
-                        bUsers.add(new User("Kerem",68));
+                        bUsers.add(new User("Hasan",90));
+                        bUsers.add(new User("Bartu",88));
+                        bUsers.add(new User("Efe",86));
+                        bUsers.add(new User("Zeynep",85));
+                        bUsers.add(new User("Erkan",84));
+                        bUsers.add(new User("Bora",80));
+                        bUsers.add(new User("Kerem",75));
                         bUsers.add(new User("Beren",73));
-                        bUsers.add(new User("Yaren",78));
-                        bUsers.add(new User("Zeynep",71));
+                        bUsers.add(new User("Yaren",64));
+                        bUsers.add(new User("Can",60));
                         FileOutputStream fileOut = new FileOutputStream("hiscore.ser");
                         ObjectOutputStream out = new ObjectOutputStream(fileOut);
                         out.writeObject(bUsers);
