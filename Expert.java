@@ -25,44 +25,17 @@ public class Expert extends User  {
         System.out.println("ai eli:");
         super.printAiHand(super.getPhand());
 
+        
 
         int tempsize=Table.size();
 
-        int tablePoint = calculateTablePoint(Table);
-        
-        if (tablePoint < 0) {
-        
-        if (tablePoint == -2 && hasSpade3()) {
-            misti = true;
-            tempnumber += tablePoint*5;
-            Expertpoint += tempnumber;
-            tempnumber=0;
-            Table.clear();
-            return;
-        }
-
-        if (tablePoint < -2 && hasSpade10()) {
-            Expert_Collected_card.addAll(Table);
-            ExperTemplist.addAll(Expert_Collected_card);
-            super.getUser_Collected_card().addAll(Table);
-            Table.clear();
-            System.out.println("masa temizlendi");
-            return;
-        }
-        if(super.getPhand().size()>0) {
-            if(super.getPhand().get(index) != null) {
-                Table.add(super.getPhand().get(index));
-                super.getPhand().remove(index);
-            }
-        }
-            return;
-
-    } else {
+        int Tablepointexpert = super.calculateTablePoint(Table);      
         
         for (int i = 0; i < super.getPhand().size(); i++) {
             if (Table.size() > 0) {
                 if(Table.size()!= 0&& super.getPhand()!=null){
-                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank())) {
+                    calculateTablePoint(Table);
+                    if (Objects.equals(Table.get(Table.size() - 1).getRank(), super.getPhand().get(i).getRank()) && Tablepointexpert +super.getPhand().get(i).getPoint()>0) {
                         if (Table.size() == tempsize) {
                         if (Table.size() == 1) {
                         System.out.println("!!!!!!!!!!!!!MİŞTİ!!!!!!!!!!!!!");
@@ -107,9 +80,9 @@ public class Expert extends User  {
                         break;
                     }
                 }
-            }
-            
-        }
+            } 
+        }   
+
         if(Table.size()==tempsize){
             for(int i=0;i<super.getPhand().size();i++){
                 if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0){
@@ -123,6 +96,8 @@ public class Expert extends User  {
                     System.out.println("masa temizlendi");}
                 }
             }
+           
+
         }
         if(Table.size() == tempsize&& super.getPhand()!=null){
             if(super.getPhand().size()>0){ 
@@ -134,7 +109,7 @@ public class Expert extends User  {
                }
             }
         }
-    }
+    
 
         System.out.println("**********");
         System.out.println("ai eli:");
@@ -163,32 +138,11 @@ public class Expert extends User  {
             card_counter.add(temp);
         }
     }
-
-    private int calculateTablePoint(ArrayList<Card> Table) {
-        int tablePoint = 0;
-        for (Card card : Table) {
-            tablePoint += card.getPoint();
-        }
-        return tablePoint;
-    }
-
-    
-    private boolean hasSpade3() {
-        for (Card card : super.getPhand()) {
-            if (card.getSuit().equals("Spade") && card.getRank().equals("3")) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    
-    private boolean hasSpade10() {
-        for (Card card : super.getPhand()) {
-            if (card.getSuit().equals("Spade") && card.getRank().equals("10")) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
+
+
+
+
+//puana göre atma regulara gidiyo 
+//table tracker a puana göre saydırcaz expert el puanı göstermece masa puanı göstermece 
+//try catch 

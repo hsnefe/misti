@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 public class Regular extends User {
+    private int Tablepoint;
     private int tempnumber;
     private int temp_point;
     private ArrayList<Card>Regular_Collected_card = new ArrayList<Card>();
