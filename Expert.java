@@ -85,7 +85,7 @@ public class Expert extends User  {
 
         if(Table.size()==tempsize){
             for(int i=0;i<super.getPhand().size();i++){
-                if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0){
+                if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0 && Tablepointexpert > 0){
                     if(Table.size()!=0 && super.getPhand().get(i).getRank().equals("10")){
                     Table.add(super.getPhand().get(i));
                     super.getPhand().remove(i);

@@ -14,5 +14,5 @@ public class Test{
         Card.cutter(Cardsa, 5);
         Gameflow the_game= new Gameflow(Table, user, new NovicePlayer(), new NovicePlayer(), new NovicePlayer(), Cardsa);
         Gameflow.set_game();
-    }
+     }
 }
