@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 public class Gameflow{
@@ -89,7 +90,6 @@ public void setUser(User uter) {
     user = uter;
 }
  static Scanner sc= new Scanner (System.in);
- static Scanner sikanner = new Scanner(System.in);
 
 public static  void choose_card(User P1,ArrayList<Card> Table){
         int rand=0;
@@ -98,8 +98,24 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             for(int i=0;i<P1.getPhand().size();i++){
                 System.out.println((i+1)+") "+ P1.getPhand().get(i).getRank()+P1.getPhand().get(i).getSuit());
             }
-    int choosed = sc.nextInt()-1;
-    P1.play_card(Table, choosed);
+            int choosed;
+
+            while (true) {
+                try {
+                    choosed = sc.nextInt() - 1;
+                    P1.play_card(Table, choosed);
+                    break;
+                } catch (InputMismatchException ime) {
+                    System.out.println("Please enter a valid input.");
+                    sc.next();
+                } catch (IndexOutOfBoundsException iobe) {
+                    if (P1.getPhand().size() > 1) {
+                        System.out.println("Please enter numbers between 1 and "  + P1.getPhand().size());
+                     } else {
+                        System.out.println("Please enter 1.");
+                    }
+                }
+            }
         }
         else P1.play_card(Table,rand);
 }
@@ -118,21 +134,76 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         int difficulty2=0;
         int difficulty3=0;
         System.out.println("Choose number of players(2 to 4):");
-        player_size = sc.nextInt();
+
+        while (true) {
+            try {
+                player_size = sc.nextInt();
+        
+                if (player_size <= 1 || player_size > 4) {
+                    System.out.println("Please enter a valid integer between 2 and 4.");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("Please enter a valid input.");
+                sc.next();
+            }
+        }
+            
         switch(player_size){
             case(4):
             System.out.println("Choose a difficulty for AI");
-            difficulty3 = sc.nextInt();
+            while (true) {
+                try {
+                    difficulty3 = sc.nextInt();
+                    if (difficulty3 < 1 || difficulty3 > 3) {
+                        System.out.println("Please enter a valid integer between 1 and 3.");
+                    } else {
+                        break;
+                    }
+                } catch (InputMismatchException ime) {
+                    System.out.println("Please enter a valid input.");
+                    sc.next();
+                }
+            }
             case(3):
             System.out.println("Choose a difficulty for AI"); 
-            difficulty2 = sc.nextInt();
+            while (true) {
+                try {
+                    difficulty2 = sc.nextInt();
+                    if (difficulty2 < 1 || difficulty2 > 3) {
+                        System.out.println("Please enter a valid integer between 1 and 3.");
+                    } else {
+                        break;
+                    }
+                } catch (InputMismatchException ime) {
+                    System.out.println("Please enter a valid input.");
+                    sc.next();
+                }
+            }
             case(2):
             System.out.println("Choose a difficulty for AI");
-            difficulty1 = sc.nextInt();
+            while (true) {
+                try {
+                    difficulty2 = sc.nextInt();
+                    if (difficulty2 < 1 || difficulty2 > 3) {
+                        System.out.println("Please enter a valid integer between 1 and 3.");
+                    } else {
+                        break;
+                    }
+                } catch (InputMismatchException ime) {
+                    System.out.println("Please enter a valid input.");
+                    sc.next();
+                }
+            }
             break;
         }
         game(player_size,difficulty1,difficulty2,difficulty3);
     }
+    private static void println(String string) {
+    }
+
+
     public static ArrayList<User> sethiscores(User upcoming, int hierarchy,boolean create){
         if(create){
             while(true){
