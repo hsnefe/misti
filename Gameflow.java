@@ -171,7 +171,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             while (true) {
                 try {
                     difficulty2 = sc.nextInt();
-                    if (difficulty2 < 1 || difficulty2 > 3) {
+                    if (difficulty2 < 1 || difficulty2 > 3 )  {
                         System.out.println("Please enter a valid integer between 1 and 3.");
                     } else {
                         break;
@@ -185,8 +185,8 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             System.out.println("Choose a difficulty for AI");
             while (true) {
                 try {
-                    difficulty2 = sc.nextInt();
-                    if (difficulty2 < 1 || difficulty2 > 3) {
+                    difficulty1 = sc.nextInt();
+                    if (difficulty1 < 1 || difficulty1 > 3) {
                         System.out.println("Please enter a valid integer between 1 and 3.");
                     } else {
                         break;
