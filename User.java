@@ -67,7 +67,7 @@ public  class User implements Player, Serializable {
         System.out.println(" If you want verbose mode please enter a password:");
         System.out.println(" Or you can press q and start playing");
         String storedPassword = "123";
-        boolean verbose = false;
+        
 
         Scanner sc = new Scanner(System.in);
         boolean validPassword = false;
@@ -82,7 +82,7 @@ public  class User implements Player, Serializable {
 
             try {
                 if (inputPassword.equals(storedPassword)) {
-                    verbose = true;
+                    //verbose = true;
                     validPassword = true;
                 } else {
                     throw new Exception("Invalid password!");
@@ -93,6 +93,7 @@ public  class User implements Player, Serializable {
         }
 
         System.out.println("Verbose mode activated!");
+        verbose=true;
     }
 
 

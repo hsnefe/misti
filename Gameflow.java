@@ -22,7 +22,7 @@ static Random r = new Random(System.currentTimeMillis());
 private static ArrayList<User> hiscores = new ArrayList<User>();
 
 
-
+private static int turn=0;
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
 private static User last_taker;
@@ -150,7 +150,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             }
         }
             
-        switch(player_size){
+         switch(player_size){
             case(4):
             System.out.println("Choose a difficulty for AI");
             while (true) {
@@ -185,7 +185,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             System.out.println("Choose a difficulty for AI");
             while (true) {
                 try {
-                    difficulty1 = sc.nextInt();
+                        difficulty1 = sc.nextInt();
                     if (difficulty1 < 1 || difficulty1 > 3) {
                         System.out.println("Please enter a valid integer between 1 and 3.");
                     } else {
@@ -288,9 +288,8 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     P2 = null;
                 }
                 Expert.expertstart();
-                User.verbosemode();
                 while(true){
-                    
+                    if(turn==0)User.verbosemode();
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
                     for(int i = 0;i<4;i++){
                         System.out.println("*******");
@@ -308,6 +307,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
+                        turn++;
                     }
                     if(Deck.size() == 0) {
                         last_taker.getUser_Collected_card().addAll(Table);
@@ -325,9 +325,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
-                    User.verbosemode();
+                    
                     while(true){
-                        
+                        if(turn==0)User.verbosemode();
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -352,6 +352,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
+                            turn++;
                         }
                         if(Deck.size() == 0) {
                             last_taker.getUser_Collected_card().addAll(Table);
@@ -368,9 +369,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
-                    User.verbosemode();
+                    
                     while(true){
-                        
+                        if(turn==0)User.verbosemode();
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -395,6 +396,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
+                            turn++;
                         }
                         if(Deck.size() == 0) {
                             last_taker.getUser_Collected_card().addAll(Table);
@@ -409,8 +411,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     else if(difficulty2 ==3) P4 = new Expert();
                     Expert.expertstart();
                     P2 = null;
-                    User.verbosemode();
+                    
                     while(true){
+                        if(turn==0)User.verbosemode();
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -435,6 +438,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
+                            turn++;
                         }
                         if(Deck.size() == 0) {
                             last_taker.getUser_Collected_card().addAll(Table);
@@ -472,8 +476,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             Expert.expertstart();
                         }
                     }
-                    User.verbosemode();
+                    
                     while(true){
+                        if(turn==0)User.verbosemode();
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -505,6 +510,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
+                            turn++;
                         }
                         if(Deck.size() == 0) {
                             last_taker.getUser_Collected_card().addAll(Table);
@@ -539,8 +545,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         else if(difficulty3==3) P2 = new Expert();
                         Expert.expertstart();
                     }
-                    User.verbosemode();
+                    
                     while(true){
+                        if(turn==0)User.verbosemode();
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
                             System.out.println("*******");
@@ -572,6 +579,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             System.out.println("*********");
                             printOutTable();
                             System.out.println("*********");
+                            turn++;
                         }
                         if(Deck.size() == 0){
                             last_taker.getUser_Collected_card().addAll(Table);
@@ -600,8 +608,9 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         else if(difficulty3==3) P2 = new Expert();
                     }
                     Expert.expertstart();
-                    User.verbosemode();
+                    
                 while(true){
+                    if(turn==0)User.verbosemode();
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
                     for(int i = 0;i<4;i++){
                         System.out.println("*******");
@@ -633,6 +642,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         System.out.println("*********");
                         printOutTable();
                         System.out.println("*********");
+                        turn++;
                     }
                     if(Deck.size() == 0) {
                         last_taker.getUser_Collected_card().addAll(Table);
