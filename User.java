@@ -1,9 +1,8 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public  class User implements Player, Serializable {
+public  class User implements Player {
     public User() {
     }
     public User(String name, int ppoint) {

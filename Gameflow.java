@@ -1,13 +1,11 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Formatter;
+import java.nio.file.Paths;
 public class Gameflow{
 
    // private NovicePlayer novicePlayer = new NovicePlayer();
@@ -19,9 +17,6 @@ public class Gameflow{
     public  static int player_size;
 
 static Random r = new Random(System.currentTimeMillis());
-private static ArrayList<User> hiscores = new ArrayList<User>();
-
-
 private static int turn=0;
 private static ArrayList<Card>Table;
 private static ArrayList<Card>Deck;
@@ -119,17 +114,14 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         }
         else P1.play_card(Table,rand);
 }
-
-
-
     public static void printOutTable(){
         System.out.println("Table:");
         for(int i = 0;i<Table.size();i++){
             System.out.println(Table.get(i).getRank()+Table.get(i).getSuit()+" "+Table.get(i).getPoint());}
     }
-
-    
     public static void set_game(){
+        System.out.println("Enter your name");
+        user.setName(sc.nextLine());
         int difficulty1 = 0;
         int difficulty2=0;
         int difficulty3=0;
@@ -200,65 +192,65 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
         }
         game(player_size,difficulty1,difficulty2,difficulty3);
     }
-    private static void println(String string) {
-    }
-
-
-    public static ArrayList<User> sethiscores(User upcoming, int hierarchy,boolean create){
-        if(create){
-            while(true){
-                try{
-                    FileInputStream fileIn = new FileInputStream("hiscore.ser");
-                    ObjectInputStream in = new ObjectInputStream(fileIn);
-                    hiscores = (ArrayList<User>) in.readObject();
-                    in.close();
-                    fileIn.close();
-                    break;
-                }catch(Exception e){
-                    try{
-                        ArrayList<User> bUsers = new ArrayList<User>();
-                        bUsers.add(new User("Hasan",90));
-                        bUsers.add(new User("Bartu",88));
-                        bUsers.add(new User("Efe",86));
-                        bUsers.add(new User("Zeynep",85));
-                        bUsers.add(new User("Erkan",84));
-                        bUsers.add(new User("Bora",80));
-                        bUsers.add(new User("Kerem",75));
-                        bUsers.add(new User("Beren",73));
-                        bUsers.add(new User("Yaren",64));
-                        bUsers.add(new User("Can",60));
-                        FileOutputStream fileOut = new FileOutputStream("hiscore.ser");
-                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                        out.writeObject(bUsers);
-                        out.close();
-                        fileOut.close();
-                        continue;
-                    }catch(FileNotFoundException e1){
-                        System.err.println("There is no file for hiscore.ser");
-                    }catch(IOException er){
-                        System.err.println("Something wrong with the  oos");
-                    }
+    public static ArrayList<String>  high_list(){
+        Formatter f = null;
+        Scanner reader = null;
+        ArrayList<String> tempArrayList = new ArrayList<String>();
+        while(true){
+            try{
+                reader = new Scanner(Paths.get("hiscore.txt"));
+                while(reader.hasNextLine()){
+                    String[] user = reader.nextLine().split(",");
+                    tempArrayList.add(user[0]);
+                    tempArrayList.add(user[1]);
                 }
+                break;
+            }catch(Exception e1){
+                try{
+                    f = new Formatter("hiscore.txt");
+                    f.format("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s","0,0","0,0","0,0","0,0","0,0","0,0","0,0","0,0","0,0","0,0","0,0");
+                }catch(IOException e2){
+                    System.out.println("something wrong with the formatter");
+                }finally{
+                    if(f != null) f.close();
+                }
+            }finally{
+                if(reader != null) reader.close();
             }
         }
-        if(hierarchy<=1) return hiscores;
-        if(hiscores.get(hierarchy-1).getPpoint()>=upcoming.getPpoint()) return hiscores;
+        return tempArrayList;
+    }
+    public static ArrayList<String> wrap_player(ArrayList<String> exlist, User the_player, int hierarchy){
+        if(hierarchy<=1) return exlist;
+        else if(Integer.parseInt(exlist.get(hierarchy-1))>= the_player.getPpoint()) return exlist;
         else{
-                try{
-                    hiscores.remove(hierarchy-1);
-                    hiscores.add(upcoming);
-                    FileOutputStream fileOut2 = new FileOutputStream("hiscore.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(fileOut2);
-                    out.writeObject(hiscores);
-                    out.close();
-                    fileOut2.close();
-                }catch(FileNotFoundException e1){
-                    System.err.println("There is no file for hiscore.ser");
-                }catch(IOException er){
-                    System.err.println("Something wrong with the  oos");
-                }
+            if(hierarchy==20){
+                exlist.remove(19);
+                exlist.remove(18);
+                exlist.add(the_player.getName());
+                exlist.add(String.valueOf(the_player.getPpoint()));
+            }
+            else{
+                Collections.swap(exlist, hierarchy-2, hierarchy);
+                Collections.swap(exlist, hierarchy-1, hierarchy+1);
+            }
+            return wrap_player(exlist, the_player, hierarchy-2);
         }
-        return sethiscores( upcoming, hierarchy-1,false);
+    }
+    public static ArrayList<String> send_flist(ArrayList<String>ultimate_list){
+        Formatter f = null;
+        try{
+            f = new Formatter("hiscore.txt");
+            for(int i = 0;i<20;i++){
+                if(i%2==1) f.format("%s,%s\n",ultimate_list.get(i-1),ultimate_list.get(i));
+            }
+        }catch(IOException e){
+            System.out.println("Final Formatter error");
+        }
+        finally{
+            if(f!= null) f.close();
+        }
+        return ultimate_list;
     }
     public static void end_game(User user,User P3, User P4, User P2){
         user.point_sum(user.getUser_Collected_card());
@@ -652,9 +644,6 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
             }
         }
         end_game(user, P3, P4, P2);
-        hiscores = sethiscores(user,10,true);
-        for(User i: hiscores){
-            System.out.println(i.getName()+i.getPpoint());
-        }
+        send_flist(wrap_player(high_list(), user, 20));
     }
 }
