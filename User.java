@@ -81,7 +81,8 @@ public  class User implements Player {
 
             try {
                 if (inputPassword.equals(storedPassword)) {
-                    //verbose = true;
+                    System.out.println("Verbose mode activated!");
+                    verbose = true;
                     validPassword = true;
                 } else {
                     throw new Exception("Invalid password!");
@@ -90,9 +91,6 @@ public  class User implements Player {
                 System.out.println(e.getMessage());
             }
         }
-
-        System.out.println("Verbose mode activated!");
-        verbose=true;
     }
 
 
