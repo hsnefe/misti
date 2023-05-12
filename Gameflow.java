@@ -217,7 +217,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     P2 = null;
                 }
                 Expert.expertstart();
-                User.verbosemode(P3, P2, P4,2);
+                User.verbosemode();
                 while(true){
                     
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
@@ -254,7 +254,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
-                    User.verbosemode(P3, P4, P2,3);
+                    User.verbosemode();
                     while(true){
                         
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
@@ -297,7 +297,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         Expert.expertstart();
                     }
                     P2 = null;
-                    User.verbosemode(P3, P4, P2,3);
+                    User.verbosemode();
                     while(true){
                         
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
@@ -338,7 +338,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                     else if(difficulty2 ==3) P4 = new Expert();
                     Expert.expertstart();
                     P2 = null;
-                    User.verbosemode(P3,P4,P2,3);
+                    User.verbosemode();
                     while(true){
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
@@ -401,7 +401,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                             Expert.expertstart();
                         }
                     }
-                    User.verbosemode(P3, P4, P2,4);
+                    User.verbosemode();
                     while(true){
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
@@ -468,7 +468,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         else if(difficulty3==3) P2 = new Expert();
                         Expert.expertstart();
                     }
-                    User.verbosemode(P3, P4, P2,4);
+                    User.verbosemode();
                     while(true){
                         Card.dealer(Table, user,P3 , P4, P2, Deck);
                         for(int i = 0;i<4;i++){
@@ -529,7 +529,7 @@ public static  void choose_card(User P1,ArrayList<Card> Table){
                         else if(difficulty3==3) P2 = new Expert();
                     }
                     Expert.expertstart();
-                    User.verbosemode(P3, P4, P2,4);
+                    User.verbosemode();
                 while(true){
                     Card.dealer(Table, user,P3 , P4, P2, Deck);
                     for(int i = 0;i<4;i++){

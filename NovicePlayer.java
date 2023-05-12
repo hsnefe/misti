@@ -14,7 +14,7 @@ public class NovicePlayer extends User {
     
     public void play_card( ArrayList<Card> Table, int index) {  
         System.out.println("**********");
-        System.out.println("ai eli:");
+        System.out.println("AI HAND:");
         super.printAiHand(super.getPhand());
         
         if(super.getPhand().get(index) != null) {
@@ -54,7 +54,7 @@ public class NovicePlayer extends User {
     super.getPhand().remove(index);
    
     System.out.println("**********");
-    System.out.println("ai eli:");
+    System.out.println("AI HAND:");
     super.printAiHand(super.getPhand());
     }
 

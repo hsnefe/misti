@@ -22,7 +22,7 @@ public class Expert extends User  {
     @Override
     public void play_card( ArrayList<Card> Table, int index) {
         System.out.println("**********");
-        System.out.println("ai eli:");
+        System.out.println("AI HAND:");
         super.printAiHand(super.getPhand());
 
         
@@ -93,7 +93,7 @@ public class Expert extends User  {
                     ExperTemplist.addAll(Expert_Collected_card);
                     super.getUser_Collected_card().addAll(Table);
                     Table.clear();
-                    System.out.println("masa temizlendi");}
+                    }
                 }
             }
            
@@ -112,7 +112,7 @@ public class Expert extends User  {
     
 
         System.out.println("**********");
-        System.out.println("ai eli:");
+        System.out.println("AI HAND:");
         super.printAiHand(super.getPhand());
     }
 
@@ -143,6 +143,5 @@ public class Expert extends User  {
 
 
 
-//puana göre atma regulara gidiyo 
-//table tracker a puana göre saydırcaz expert el puanı göstermece masa puanı göstermece 
+
 //try catch 
