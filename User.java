@@ -175,4 +175,19 @@ public  class User implements Player, Serializable {
         }
     }
     }
+    public int calculateTablePoint(ArrayList<Card> Table) {
+        int tablePoint = 0;
+        for (Card card : Table) {
+            tablePoint += card.getPoint();
+        }
+        return tablePoint;
+    }
+
+    public int calculateHandPoint(ArrayList<Card> hand) {
+        int handpoint = 0;
+        for (Card card : hand) {
+            handpoint += card.getPoint();
+        }
+        return handpoint;
+    }
 }

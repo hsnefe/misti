@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.io.FileWriter;
-public class Test{   
+public class Test{
      public static void main(String[] args) throws InterruptedException {
         ArrayList<Card>Table = new ArrayList<Card>();
         ArrayList<Card>Cardsa = new ArrayList<Card>();
