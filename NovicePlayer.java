@@ -18,7 +18,7 @@ public class NovicePlayer extends User {
         super.printAiHand(super.getPhand());
         
         if(super.getPhand().get(index) != null) {
-            if (super.getPhand().get(index).getRank().equals("10")) {
+            if (super.getPhand().get(index).getRank().equals("J")) {
                 Table.add(super.getPhand().get(index));
                 super.jchecker(Table);
                 //super.getPhand().remove(index);

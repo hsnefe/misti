@@ -96,12 +96,12 @@ public  class User implements Player {
 
 
     public  void jchecker(ArrayList<Card>Cardlist){
-        if(Cardlist.get(Cardlist.size()-1).getRank().equals("10")){
+        if(Cardlist.get(Cardlist.size()-1).getRank().equals("J")){
              if (Cardlist.size() > 1 && Cardlist.size() != 2) {
                 User_Collected_card.addAll(Cardlist);
                 Cardlist.clear();
             } else if (Cardlist.size() == 2) {
-                if (Cardlist.get(0).getRank().equals("10")) {
+                if (Cardlist.get(0).getRank().equals("J")) {
                 } else {
                 User_Collected_card.addAll(Cardlist);
                 Cardlist.clear();

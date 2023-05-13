@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.nio.file.Paths;
 import java.util.Formatter;
+import java.util.Random;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,19 +42,76 @@ public class Card {
                 for(int j = 0;j<13;j++){
                     if(j ==3){}
                     if(i==1){
+                        if (j == 0) {
+                            f.format("%s,%s,%s\n","Spade","A","5");
+                        }
+                        else if (j == 10) {
+                            f.format("%s,%s,%s\n","Spade","J","5");
+                        }
+                        else if (j == 11) {
+                            f.format("%s,%s,%s\n","Spade","Q","5");
+                        }
+                        else if (j == 12) {
+                            f.format("%s,%s,%s\n","Spade","K","5");
+                        } else 
                         f.format("%s,%s,%s\n","Spade",j,"5");
                     }
                     if(i == 2){
-                        if(j ==3)f.format("%s,%s,%s\n","Heart",j,"-2");
-                        else f.format("%s,%s,%s\n","Heart",j,"1");
+                        if (j == 0) {
+                            f.format("%s,%s,%s\n","Heart","A","1");
+                        }
+                        else if (j == 10) {
+                            f.format("%s,%s,%s\n","Heart","J","1");
+                        }
+                        else if (j == 11) {
+                            f.format("%s,%s,%s\n","Heart","Q","1");
+                        }
+                        else if (j == 12) {
+                            f.format("%s,%s,%s\n","Heart","K","1");
+                        }
+                        else if (j == 3) {
+                            f.format("%s,%s,%s\n","Heart",j,"-2");
+                        } else
+
+                        f.format("%s,%s,%s\n","Heart",j,"1");
                     }
                     if(i ==3 ){
-                        if(j ==3)f.format("%s,%s,%s\n","Diamond",j,"-2");
-                        else f.format("%s,%s,%s\n","Diamond",j,"1");
+                        if (j == 0) {
+                            f.format("%s,%s,%s\n","Diamond","A","1");
+                        }
+                        else if (j == 10) {
+                            f.format("%s,%s,%s\n","Diamond","J","1");
+                        }
+                        else if (j == 11) {
+                            f.format("%s,%s,%s\n","Diamond","Q","1");
+                        }
+                        else if (j == 12) {
+                            f.format("%s,%s,%s\n","Diamond","K","1");
+                        }
+                        else if (j == 3) {
+                            f.format("%s,%s,%s\n","Diamond",j,"-2");
+                        } else
+
+                        f.format("%s,%s,%s\n","Diamond",j,"1");
                     }
                     if(i == 4){
-                        if(j ==3)f.format("%s,%s,%s\n","Club",j,"-2");
-                        else f.format("%s,%s,%s\n","Club",j,"1");
+                        if (j == 0) {
+                            f.format("%s,%s,%s\n","Club","A","1");
+                        }
+                        else if (j == 10) {
+                            f.format("%s,%s,%s\n","Club","J","1");
+                        }
+                        else if (j == 11) {
+                            f.format("%s,%s,%s\n","Club","Q","1");
+                        }
+                        else if (j == 12) {
+                            f.format("%s,%s,%s\n","Club","K","1");
+                        }
+                        else if (j == 3) {
+                            f.format("%s,%s,%s\n","Club",j,"-2");
+                        } else
+
+                        f.format("%s,%s,%s\n","Club",j,"1");
                     }
                 }
             }
@@ -88,6 +146,8 @@ public class Card {
         return deck;
     }
     public static ArrayList<Card> cutter(ArrayList<Card> deck, int uselect){
+        Random r = new Random();
+        uselect = r.nextInt(1,52);
         uselect--;
         ArrayList<Card> temp1 = new ArrayList<Card>();
         ArrayList<Card> temp2 = new ArrayList<Card>();

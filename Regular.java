@@ -36,7 +36,7 @@ public class Regular extends User {
                         Table.clear();
                         return;
                     }    
-                    else if(super.getPhand().get(i).getRank().equals("10") && Table.size() > 0&& Tablepoint + super.getPhand().get(i).getPoint()>0){
+                    else if(super.getPhand().get(i).getRank().equals("J") && Table.size() > 0&& Tablepoint + super.getPhand().get(i).getPoint()>0){
                         Table.add(super.getPhand().get(i));
                         super.getPhand().remove(i);
                         for(int j=0;j<Table.size();j++){
