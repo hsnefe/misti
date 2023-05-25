@@ -39,35 +39,35 @@ public class Card {
             fw = new FileWriter("deck.txt",false);
             f = new Formatter(fw);
             for(int i = 1;i<5;i++){
-                for(int j = 0;j<13;j++){
+                for(int j = 1;j<14;j++){
                     if(j ==3){}
                     if(i==1){
-                        if (j == 0) {
+                        if (j == 1) {
                             f.format("%s,%s,%s\n","Spade","A","5");
                         }
-                        else if (j == 10) {
+                        else if (j == 11) {
                             f.format("%s,%s,%s\n","Spade","J","5");
                         }
-                        else if (j == 11) {
+                        else if (j == 12) {
                             f.format("%s,%s,%s\n","Spade","Q","5");
                         }
-                        else if (j == 12) {
+                        else if (j == 13) {
                             f.format("%s,%s,%s\n","Spade","K","5");
                         } else 
                         f.format("%s,%s,%s\n","Spade",j,"5");
                     }
                     if(i == 2){
-                        if (j == 0) {
+                        if (j == 1) {
                             f.format("%s,%s,%s\n","Heart","A","1");
                         }
-                        else if (j == 10) {
+                        else if (j == 11) {
                             f.format("%s,%s,%s\n","Heart","J","1");
                         }
-                        else if (j == 11) {
+                        else if (j == 12) {
                             f.format("%s,%s,%s\n","Heart","Q","1");
                         }
-                        else if (j == 12) {
-                            f.format("%s,%s,%s\n","Heart","K","1");
+                        else if (j == 13) {
+                            f.format("%s,%s,%s\n","Heart","K ","1");
                         }
                         else if (j == 3) {
                             f.format("%s,%s,%s\n","Heart",j,"-2");
@@ -76,16 +76,16 @@ public class Card {
                         f.format("%s,%s,%s\n","Heart",j,"1");
                     }
                     if(i ==3 ){
-                        if (j == 0) {
+                        if (j == 1) {
                             f.format("%s,%s,%s\n","Diamond","A","1");
                         }
-                        else if (j == 10) {
+                        else if (j == 11) {
                             f.format("%s,%s,%s\n","Diamond","J","1");
                         }
-                        else if (j == 11) {
+                        else if (j == 12) {
                             f.format("%s,%s,%s\n","Diamond","Q","1");
                         }
-                        else if (j == 12) {
+                        else if (j == 13) {
                             f.format("%s,%s,%s\n","Diamond","K","1");
                         }
                         else if (j == 3) {
@@ -95,16 +95,16 @@ public class Card {
                         f.format("%s,%s,%s\n","Diamond",j,"1");
                     }
                     if(i == 4){
-                        if (j == 0) {
+                        if (j == 1) {
                             f.format("%s,%s,%s\n","Club","A","1");
                         }
-                        else if (j == 10) {
+                        else if (j == 11) {
                             f.format("%s,%s,%s\n","Club","J","1");
                         }
-                        else if (j == 11) {
+                        else if (j == 12) {
                             f.format("%s,%s,%s\n","Club","Q","1");
                         }
-                        else if (j == 12) {
+                        else if (j == 13) {
                             f.format("%s,%s,%s\n","Club","K","1");
                         }
                         else if (j == 3) {

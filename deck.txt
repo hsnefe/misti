@@ -1,5 +1,4 @@
-Spade,0,5
-Spade,1,5
+Spade,A,5
 Spade,2,5
 Spade,3,5
 Spade,4,5
@@ -9,10 +8,10 @@ Spade,7,5
 Spade,8,5
 Spade,9,5
 Spade,10,5
-Spade,11,5
-Spade,12,5
-Heart,0,1
-Heart,1,1
+Spade,J,5
+Spade,Q,5
+Spade,K,5
+Heart,A,1
 Heart,2,1
 Heart,3,-2
 Heart,4,1
@@ -22,10 +21,10 @@ Heart,7,1
 Heart,8,1
 Heart,9,1
 Heart,10,1
-Heart,11,1
-Heart,12,1
-Diamond,0,1
-Diamond,1,1
+Heart,J,1
+Heart,Q,1
+Heart,K ,1
+Diamond,A,1
 Diamond,2,1
 Diamond,3,-2
 Diamond,4,1
@@ -35,10 +34,10 @@ Diamond,7,1
 Diamond,8,1
 Diamond,9,1
 Diamond,10,1
-Diamond,11,1
-Diamond,12,1
-Club,0,1
-Club,1,1
+Diamond,J,1
+Diamond,Q,1
+Diamond,K,1
+Club,A,1
 Club,2,1
 Club,3,-2
 Club,4,1
@@ -48,5 +47,6 @@ Club,7,1
 Club,8,1
 Club,9,1
 Club,10,1
-Club,11,1
-Club,12,1
+Club,J,1
+Club,Q,1
+Club,K,1
